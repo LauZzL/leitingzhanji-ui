@@ -6,10 +6,13 @@
 <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/LauZzL/leitingzhanji-ui?style=for-the-badge">
 <img alt="GitHub forks" src="https://img.shields.io/github/forks/LauZzL/leitingzhanji-ui?style=for-the-badge">
 <img alt="GitHub Release" src="https://img.shields.io/github/v/release/LauZzL/leitingzhanji-ui?style=for-the-badge">
-<img alt="GitHub Downloads (all assets, all releases)" src="https://img.shields.io/github/downloads/LauZzL/leitingzhanji-ui/total?style=for-the-badge">
 <br>
 <img alt="Page Views" src="https://badges.toozhao.com/badges/01J7D1CAVCZQSZNWQZV9RHS37H/green.svg">
 </div>
+
+## 前言
+
+本仓库仅用于存档代码，记录版本日志。
 
 ## 免责声明
 
@@ -57,6 +60,8 @@
   - 复活免钻石
 
 ## 封包
+
+> 请勿加载或执行未知来源、功能的封包，他可能造成账号数据损失。
 
 ### 封包流程编辑
 
