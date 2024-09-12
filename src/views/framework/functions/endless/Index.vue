@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-form>
+        <el-form :inline="true">
             <el-form-item label="购买道具">
                 <el-select v-model="daoju" placeholder="道具" style="width: 100px;">
                     <el-option v-for="item in shopStore.shop" :key="item.value" :label="item.name"
@@ -13,26 +13,36 @@
                     </template>
                 </el-input>
             </el-form-item>
+            <br>
             <el-form-item label="无尽宝箱">
                 <el-select v-model="boss_num" placeholder="一键数量" style="width: 100px;">
-                    <el-option v-for="item in boss_list" :key="item" :label="item"
-                        :value="item" />
+                    <el-option v-for="item in boss_list" :key="item" :label="item" :value="item" />
                 </el-select>
                 <el-space style="margin-left: 10px;">
                     <el-button @click="attack(0)">
-                    攻打BOSS宝箱
-                </el-button>
-                <el-button @click="attack(1)">
-                    攻打海盗宝箱(单次限1)
-                </el-button>
+                        攻打BOSS宝箱
+                    </el-button>
+                    <el-button @click="attack(1)">
+                        攻打海盗宝箱(单次限1)
+                    </el-button>
                 </el-space>
             </el-form-item>
+            <br>
+            <el-form-item label="攻打次数">
+                <el-input-number style="width: 100px;" :step="1" :min="1" v-model="nums" size="small"
+                    placeholder="请输入攻打次数" clearable />
+            </el-form-item>
+            <el-form-item label="Timer">
+                <el-input-number style="width: 180px;" :step="1" :min="1" v-model="attack_timer" size="small"
+                    placeholder="请输入整数" clearable />
+            </el-form-item>
+            <br>
             <el-form-item label="无尽祝福">
                 <el-select v-model="zhufu" placeholder="祝福类型" style="width: 100px;" @change="modify('zhufu', zhufu)">
-                    <el-option v-for="item in zhufu_list" :key="item.value" :label="item.name"
-                        :value="item.value"  />
+                    <el-option v-for="item in zhufu_list" :key="item.value" :label="item.name" :value="item.value" />
                 </el-select>
-                <el-checkbox @change="modify('enable_zhufu', enable_zhufu)" v-model="enable_zhufu" style="margin-left: 10px;">
+                <el-checkbox @change="modify('enable_zhufu', enable_zhufu)" v-model="enable_zhufu"
+                    style="margin-left: 10px;">
                     启用
                 </el-checkbox>
             </el-form-item>
@@ -48,6 +58,9 @@ import Webview from '@/utils/webview'
 const shopStore = useShopStore();
 const daoju = ref()
 const buy_num = ref()
+
+const nums = ref(1)
+const attack_timer = ref(60)
 
 const boss_list = ref(Array.from({ length: 5 }, (_, index) => index + 1))
 const boss_num = ref(1)
@@ -81,7 +94,9 @@ const attack = (type) => {
     Webview.sendMessageToHost({
         cmd: 794,
         num: boss_num.value,
-        type: type
+        type: type,
+        nums: nums.value,
+        attack_timer: attack_timer.value
     })
 }
 
