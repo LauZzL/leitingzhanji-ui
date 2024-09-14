@@ -4,7 +4,7 @@
       <h1>
         网易云音乐3代金色天际线
       </h1>
-      <el-text class="mx-1" type="danger">该项目仅供学习交流，请勿用于非法行为</el-text>
+      <el-text class="mx-1" type="danger">该项目仅供学习交流，纯免费项目，请勿用于非法行为，谨防金钱交易。</el-text>
       <br>
       <el-text>
         Star 该项目 <el-link type="primary" target="_blank"

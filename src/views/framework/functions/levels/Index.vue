@@ -91,6 +91,14 @@
                         <el-form-item>
                             <el-checkbox v-model="three_two" @change="toggleThree">3经验双倍</el-checkbox>
                         </el-form-item>
+                        <br>
+                        <el-alert type="warning" style="margin-bottom: 10px;" :closable="false">(原分数修改，不安全，可能封号)金币为分数加成修改，100≈15W分，修改300≈1200金币(仅供参考)，修改过大金币可能不增加，每局最高3000W金币，开启后攻打即可，无需进入关卡，建议换低等级装备刷金币，切勿过大，可能会封号，请三思而后行。</el-alert>
+                        <el-form-item label="金币">
+                            <el-input v-model="gold_times" placeholder="请输入分数"></el-input>
+                        </el-form-item>
+                        <el-form-item>
+                            <el-checkbox v-model="enable_gold_times" @change="toggleScore">启用修改</el-checkbox>
+                        </el-form-item>
                     </el-form>
                 </div>
             </el-tab-pane>
@@ -121,8 +129,10 @@ const rule_payload = ref({
     attack_timer: 5
 })
 
-
+const gold_times = ref(100)
+const enable_gold_times = ref(false)
 const three_two = ref(false)
+
 
 const attack = (cmd, e) => {
     e.cmd = cmd
@@ -139,6 +149,15 @@ const toggleThree = (e) => {
     Webview.sendMessageToHost({
         cmd: 701,
         key: "three_two",
+        value: e
+    })
+}
+
+const toggleScore = (e) => {
+    Webview.sendMessageToHost({
+        cmd: 702,
+        key: "gold_times",
+        score: gold_times.value,
         value: e
     })
 }
