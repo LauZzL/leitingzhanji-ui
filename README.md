@@ -1,4 +1,4 @@
-<h1 align="center">网易云音乐 Build 3</h1>
+<h1 align="center">雷霆战机 NEM Build 3</h1>
 
 <p align="center">基于 <a href="https://go.dev/" target="_blank">Golang</a> + <a href="https://nodejs.org/zh-cn" target="_blank">Node</a> + <a href="https://vuejs.org/" target="_blank">Vue3</a> 构建。</p>
 
@@ -135,6 +135,6 @@
 
 - [SunnyNet](https://github.com/qtgolang/SunnyNet)
 
-## Star
+## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=LauZzL/leitingzhanji-ui&type=Date)](https://star-history.com/#LauZzL/leitingzhanji-ui&Date)
