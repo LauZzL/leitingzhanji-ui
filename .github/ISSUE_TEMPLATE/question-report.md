@@ -1,7 +1,7 @@
 ---
 name: 🙋 问题交流
 about: 在文档或讨论中没有回答的使用问题
-title: "🙋 问题交流。。。"
+title: "🙋 [ Question ] 简要描述，不要删除前面内容"
 labels: ["question"]
 ---
 
