@@ -50,6 +50,7 @@
               <el-descriptions-item label="UID">
                 <el-tag size="small">{{ userStore?.user?.uid?userStore?.user?.uid:'未获取到' }}</el-tag>
               </el-descriptions-item>
+              <el-descriptions-item label="体力">{{ userStore?.user?.energy?userStore?.user?.energy:'未获取到' }}</el-descriptions-item>
               <el-descriptions-item label="背包">{{ userStore?.user?.pack?userStore?.user?.pack:'未获取到' }}</el-descriptions-item>
               <el-descriptions-item label="金币">{{ userStore?.user?.gold?userStore?.user?.gold:'未获取到' }}</el-descriptions-item>
               <el-descriptions-item label="钻石">{{ userStore?.user?.diamonds?userStore?.user?.diamonds:'未获取到' }}</el-descriptions-item>
