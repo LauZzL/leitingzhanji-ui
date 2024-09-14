@@ -11,12 +11,17 @@ labels: ["question"]
 
 请在提交问题之前回答这些问题，谢谢。 
 
-### 你使用了哪个版本？ | Which version did you use?
+### 你使用了哪个版本？
 
-### 预期行为 | Expected behavior
 
-### 实际行为 | Actual behavior
+### 出现了什么问题？
 
-### 原因分析（如果可以） | Cause analysis (if possible)
 
-### 问题重现步骤 | Steps to reproduce the problem
+### 原因分析（如果可以）
+
+
+### 问题重现步骤
+
+
+### 截图
+
