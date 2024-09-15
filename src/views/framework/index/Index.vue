@@ -32,7 +32,7 @@
       </el-card>
     </div>
     <div class="framework-index-user">
-      <el-card style="width: 100%;height: 225px;">
+      <el-card style="width: 100%">
         <template #header>
           <div class="card-header">
             <span>个人信息</span>
@@ -180,7 +180,6 @@ const getUserInfo = () => {
 
 .framework-index-user-left-info {
   display: flex;
-  height: 72px;
   flex-direction: column;
   justify-content: space-between;
   padding-left: 10px;
