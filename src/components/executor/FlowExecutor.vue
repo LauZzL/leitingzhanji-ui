@@ -35,40 +35,48 @@
         </el-drawer>
         <el-form ref="form">
             <el-form-item label="操作">
-                <el-button @click="executeFlow">执行</el-button>
-                <el-button @click="builder_visable = true">编译</el-button>
-                <el-button @click="confirmPwd">导入</el-button>
+                <el-button type="primary" @click="executeFlow" plain>执行</el-button>
+                <el-button type="primary" @click="builder_visable = true" plain>编译</el-button>
+                <el-button typeof="info" @click="confirmPwd" plain>导入</el-button>
             </el-form-item>
             <el-form-item label="流程步骤">
                 <el-button @click="addStep('')">添加步骤</el-button>
             </el-form-item>
-            <el-form-item v-for="(step, index) in executorStore.executor" :key="index" :label="`步骤${index + 1}`">
-                <el-select v-model="step.type" placeholder="请选择步骤类型">
-                    <el-option label="延迟" value="sleep"></el-option>
-                    <el-option label="请求" value="request"></el-option>
-                    <el-option label="日志" value="log"></el-option>
-                    <el-option label="弹窗" value="dialog"></el-option>
-                </el-select>
-                <el-input v-if="step.type === 'sleep'" v-model="step.duration" placeholder="延迟时间(毫秒)"></el-input>
-                <el-input v-if="step.type === 'request'" v-model="step.payload" placeholder="请求数据"></el-input>
-                <el-input v-if="step.type === 'log' || step.type === 'dialog'" v-model="step.message"
-                    placeholder="消息内容"></el-input>
-                <el-select v-if="step.type === 'dialog'" v-model="step.dialogType" placeholder="请选择弹窗类型">
+
+            <el-form-item v-for="(step, index) in executorStore.executor" :key="index">
+                <el-card shadow="hover" style="width: 100%;">
+                  <template #header>
+                    <div class="card-header">
+                      <el-tag type="success" plain>步骤{{ index + 1 }}</el-tag>
+                    </div>
+                  </template>
+                  <el-select class="form-item-mt w30" v-model="step.type" placeholder="请选择步骤类型">
+                    <el-option label="延迟等待" value="sleep"></el-option>
+                    <el-option label="发送封包" value="request"></el-option>
+                    <el-option label="输出日志" value="log"></el-option>
+                    <el-option label="信息弹窗" value="dialog"></el-option>
+                  </el-select>
+                  <el-input class="form-item-mt" v-if="step.type === 'sleep'" v-model="step.duration" placeholder="延迟时间(毫秒)"></el-input>
+                  <el-input type="textarea" class="form-item-mt" v-if="step.type === 'request'" v-model="step.payload" placeholder="封包数据"></el-input>
+                  <el-input type="textarea" class="form-item-mt" v-if="step.type === 'log' || step.type === 'dialog'" v-model="step.message"
+                            placeholder="消息内容"></el-input>
+                  <el-select class="form-item-mt w30" v-if="step.type === 'dialog'" v-model="step.dialogType" placeholder="请选择弹窗类型">
                     <el-option label="成功" value="success"></el-option>
                     <el-option label="警告" value="warning"></el-option>
                     <el-option label="信息" value="info"></el-option>
                     <el-option label="错误" value="error"></el-option>
-                </el-select>
-                <el-select v-if="step.type === 'log'" v-model="step.logType" placeholder="请选择日志类型">
+                  </el-select>
+                  <el-select class="form-item-mt w30" v-if="step.type === 'log'" v-model="step.logType" placeholder="请选择日志类型">
                     <el-option label="主要" value="primary"></el-option>
                     <el-option label="成功" value="success"></el-option>
                     <el-option label="警告" value="warning"></el-option>
                     <el-option label="危险" value="danger"></el-option>
                     <el-option label="信息" value="info"></el-option>
                     <el-option label="默认" value=""></el-option>
-                </el-select>
-                <el-input v-model="step.description" placeholder="步骤说明"></el-input>
-                <el-button @click="removeStep(index)">移除</el-button>
+                  </el-select>
+                  <el-input type="textarea" class="form-item-mt" v-model="step.description" placeholder="步骤说明"></el-input>
+                  <el-button type="danger" class="form-item-mt" @click="removeStep(index)" plain>移除</el-button>
+                </el-card>
             </el-form-item>
         </el-form>
         <LoggerComponent :logger="loggerStore.packet_logger" />
@@ -77,7 +85,6 @@
 
 <script setup>
 import { ref } from 'vue';
-import { ElMessage, ElMessageBox } from 'element-plus';
 import { useLoggerStore } from '@/store/logger';
 import { useExecutorStore } from '@/store/executor';
 import LoggerComponent from "@/components/logger/LoggerComponent.vue";
@@ -150,3 +157,14 @@ const importFlow = () => {
 };
 
 </script>
+
+
+<style scoped>
+.form-item-mt {
+  margin-top: 5px;
+}
+
+.w30 {
+  width: 30%;
+}
+</style>
