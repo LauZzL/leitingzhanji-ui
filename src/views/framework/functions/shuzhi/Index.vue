@@ -2,42 +2,42 @@
     <div>
         <el-form :inline="true" :model="payload" class="demo-form-inline">
             <el-form-item label="战机伤害">
-                <el-input type="number" :step="100000" v-model="engineDamage" placeholder="请输入战机伤害"
+                <el-input type="number" :step="100000" v-model="settingStore.setting.shuzhi.engineDamage" placeholder="请输入战机伤害"
                     class="input-with-btn">
                     <template #append>
-                        <el-button @click="modify('engineDamage', engineDamage)">修改</el-button>
+                        <el-button @click="modify('engineDamage', settingStore.setting.shuzhi.engineDamage)">修改</el-button>
                     </template>
                 </el-input>
             </el-form-item>
             <el-form-item label="副武器伤害">
-                <el-input type="number" :step="100000" v-model="weaponDamage" placeholder="请输入副武器伤害"
+                <el-input type="number" :step="100000" v-model="settingStore.setting.shuzhi.weaponDamage" placeholder="请输入副武器伤害"
                     class="input-with-btn">
                     <template #append>
-                        <el-button @click="modify('weaponDamage', weaponDamage)">修改</el-button>
+                        <el-button @click="modify('weaponDamage', settingStore.setting.shuzhi.weaponDamage)">修改</el-button>
                     </template>
                 </el-input>
             </el-form-item>
             <el-form-item label="僚机伤害">
-                <el-input type="number" :step="100000" v-model="wingmanDamage" placeholder="请输入僚机伤害"
+                <el-input type="number" :step="100000" v-model="settingStore.setting.shuzhi.wingmanDamage" placeholder="请输入僚机伤害"
                     class="input-with-btn">
                     <template #append>
-                        <el-button @click="modify('wingmanDamage', wingmanDamage)">修改</el-button>
+                        <el-button @click="modify('wingmanDamage', settingStore.setting.shuzhi.wingmanDamage)">修改</el-button>
                     </template>
                 </el-input>
             </el-form-item>
             <el-form-item label="战机血量">
-                <el-input type="number" :step="100000" v-model="engineHp" placeholder="请输入战机血量"
+                <el-input type="number" :step="100000" v-model="settingStore.setting.shuzhi.engineHp" placeholder="请输入战机血量"
                     class="input-with-btn">
                     <template #append>
-                        <el-button @click="modify('engineHp', engineHp)">修改</el-button>
+                        <el-button @click="modify('engineHp', settingStore.setting.shuzhi.engineHp)">修改</el-button>
                     </template>
                 </el-input>
             </el-form-item>
             <el-form-item label="对局分数">
-                <el-input type="number" :step="100" v-model="score" placeholder="请输入对局分数"
+                <el-input type="number" :step="100" v-model="settingStore.setting.shuzhi.score" placeholder="请输入对局分数"
                     class="input-with-btn">
                     <template #append>
-                        <el-button @click="modify('score', score)">修改</el-button>
+                        <el-button @click="modify('score', settingStore.setting.shuzhi.score)">修改</el-button>
                     </template>
                 </el-input>
             </el-form-item>
@@ -49,12 +49,9 @@
 <script setup>
 import { ref } from 'vue'
 import Webview from '@/utils/webview'
+import {useSettingStore} from "@/store/setting.js";
 
-const engineDamage = ref(100000)
-const weaponDamage = ref(100000)
-const wingmanDamage = ref(100000)
-const engineHp = ref(5000000)
-const score = ref(100)
+const settingStore = useSettingStore()
 
 const payload = ref({
     cmd: 701,

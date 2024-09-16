@@ -2,11 +2,11 @@
     <div>
         <el-form :inline="true">
             <el-form-item label="购买道具">
-                <el-select v-model="daoju" placeholder="道具" style="width: 100px;">
+                <el-select v-model="settingStore.setting.endless.daoju" placeholder="道具" style="width: 100px;">
                     <el-option v-for="item in shopStore.shop" :key="item.value" :label="item.name"
                         :value="item.value" />
                 </el-select>
-                <el-input type="number" :min="1" :max="32767" v-model="buy_num" placeholder="购买数量" style="width: 160px;margin-left: 10px;"
+                <el-input type="number" :min="1" :max="32767" v-model="settingStore.setting.endless.buy_num" placeholder="购买数量" style="width: 160px;margin-left: 10px;"
                     class="input-with-btn">
                     <template #append>
                         <el-button @click="buy">购买</el-button>
@@ -15,7 +15,7 @@
             </el-form-item>
             <br>
             <el-form-item label="无尽宝箱">
-                <el-select v-model="boss_num" placeholder="一键数量" style="width: 100px;">
+                <el-select v-model="settingStore.setting.endless.boss_num" placeholder="一键数量" style="width: 100px;">
                     <el-option v-for="item in boss_list" :key="item" :label="item" :value="item" />
                 </el-select>
                 <el-space style="margin-left: 10px;">
@@ -29,19 +29,19 @@
             </el-form-item>
             <br>
             <el-form-item label="攻打次数">
-                <el-input-number style="width: 100px;" :step="1" :min="1" v-model="nums" size="small"
+                <el-input-number style="width: 100px;" :step="1" :min="1" v-model="settingStore.setting.endless.nums" size="small"
                     placeholder="请输入攻打次数" clearable />
             </el-form-item>
             <el-form-item label="Timer">
-                <el-input-number style="width: 180px;" :step="1" :min="1" v-model="attack_timer" size="small"
+                <el-input-number style="width: 180px;" :step="1" :min="1" v-model="settingStore.setting.endless.attack_timer" size="small"
                     placeholder="请输入整数" clearable />
             </el-form-item>
             <br>
             <el-form-item label="无尽祝福">
-                <el-select v-model="zhufu" placeholder="祝福类型" style="width: 100px;" @change="modify('zhufu', zhufu)">
+                <el-select v-model="settingStore.setting.endless.zhufu" placeholder="祝福类型" style="width: 100px;" @change="modify('zhufu', settingStore.setting.endless.zhufu)">
                     <el-option v-for="item in zhufu_list" :key="item.value" :label="item.name" :value="item.value" />
                 </el-select>
-                <el-checkbox @change="modify('enable_zhufu', enable_zhufu)" v-model="enable_zhufu"
+                <el-checkbox @change="modify('enable_zhufu', settingStore.setting.endless.enable_zhufu)" v-model="settingStore.setting.endless.enable_zhufu"
                     style="margin-left: 10px;">
                     启用
                 </el-checkbox>
@@ -53,18 +53,14 @@
 <script setup>
 import { ref } from 'vue'
 import { useShopStore } from '@/store/shop';
+import {useSettingStore} from "@/store/setting.js";
 import Webview from '@/utils/webview'
 
 const shopStore = useShopStore();
-const daoju = ref()
-const buy_num = ref()
+const settingStore = useSettingStore();
 
-const nums = ref(1)
-const attack_timer = ref(60)
 
 const boss_list = ref(Array.from({ length: 5 }, (_, index) => index + 1))
-const boss_num = ref(1)
-
 const zhufu_list = ref([
     {
         name: '90级曙光',
@@ -79,24 +75,22 @@ const zhufu_list = ref([
         value: 3
     }
 ])
-const zhufu = ref()
-const enable_zhufu = ref(false)
 
 const buy = () => {
     Webview.sendMessageToHost({
         cmd: 793,
-        num: buy_num.value,
-        daoju: daoju.value
+        num: settingStore.setting.endless.buy_num,
+        daoju: settingStore.setting.endless.daoju
     })
 }
 
 const attack = (type) => {
     Webview.sendMessageToHost({
         cmd: 794,
-        num: boss_num.value,
+        num: settingStore.setting.endless.boss_num,
         type: type,
-        nums: nums.value,
-        attack_timer: attack_timer.value
+        nums: settingStore.setting.endless.nums,
+        attack_timer: settingStore.setting.endless.attack_timer
     })
 }
 
