@@ -7,6 +7,8 @@
       <el-button @click="sendCmd({ cmd:203 })">寻宝装备宝箱</el-button>
       <el-button @click="sendCmd({ cmd:204 })">星际探索</el-button>
       <el-button @click="sendCmd({ cmd:205 })">幸运转盘</el-button>
+      <el-button @click="sendCmd({ cmd:207 })">弹幕钻石</el-button>
+      <el-button @click="sendCmd({ cmd:208 })">桌面启动钻石</el-button>
     </el-space>
   </div>
 </template>
