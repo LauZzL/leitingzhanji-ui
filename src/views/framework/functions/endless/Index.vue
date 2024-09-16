@@ -6,7 +6,7 @@
                     <el-option v-for="item in shopStore.shop" :key="item.value" :label="item.name"
                         :value="item.value" />
                 </el-select>
-                <el-input type="number" v-model="buy_num" placeholder="购买数量" style="width: 160px;margin-left: 10px;"
+                <el-input type="number" :min="1" :max="32767" v-model="buy_num" placeholder="购买数量" style="width: 160px;margin-left: 10px;"
                     class="input-with-btn">
                     <template #append>
                         <el-button @click="buy">购买</el-button>
