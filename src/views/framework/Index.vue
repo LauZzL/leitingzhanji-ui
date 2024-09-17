@@ -94,7 +94,6 @@ const hasUpdate = (msg) => {
     {
       confirmButtonText: '前往更新',
       cancelButtonText: '取消更新',
-      type: 'warning',
       dangerouslyUseHTMLString: true,
     }
   )
