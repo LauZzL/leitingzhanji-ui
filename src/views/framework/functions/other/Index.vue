@@ -3,6 +3,9 @@
         <el-alert style="margin-bottom: 5px;" type="warning" show-icon
             :closable="false">防检测开启后需要到闯关模式进入关卡后看到日志提示防检测开启成功才有效，若未看到开启成功就进行游戏可能导致数据结算异常。</el-alert>
         <el-form :inline="true" :model="payload" class="demo-form-inline">
+          <el-form-item>
+            <el-checkbox v-model="settingStore.setting.other.changwanka" @change="modify('changwanka', settingStore.setting.other.changwanka)">畅玩卡(月卡)</el-checkbox>
+          </el-form-item>
             <el-form-item>
                 <el-checkbox v-model="settingStore.setting.other.anti_01" @change="modify('anti_01', settingStore.setting.other.anti_01)">防检测</el-checkbox>
             </el-form-item>
