@@ -112,6 +112,10 @@
 
 ![网络监听](https://s21.ax1x.com/2024/09/10/pAm0t56.png)
 
+#### JS-HOOK-Server
+
+![JS-Hook-Server](https://s21.ax1x.com/2024/09/22/pAMTEon.png)
+
 #### 数据修改
 
 ![数据修改](https://s21.ax1x.com/2024/09/10/pAm0UPK.jpg)

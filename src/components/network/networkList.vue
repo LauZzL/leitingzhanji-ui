@@ -53,6 +53,9 @@
         </el-drawer>
         <el-space :size="18" style="margin-bottom: 10px;">
             <el-checkbox v-model="messageStore.capture">捕获数据</el-checkbox>
+          <el-tooltip placement="top" content="启动js-hook-server来监听数据">
+            <el-button @click="startJsHookServer" type="primary">启动Js-Hook-Server</el-button>
+          </el-tooltip>
             <el-tooltip placement="top" content="Mock">
                 <el-button type="primary" @click="mockVisable = true" circle><svg-icon
                         style="width: 16px; height: 16px;" iconName="icon-mock" /></el-button>
@@ -62,7 +65,7 @@
                         iconName="icon-clear" /></el-button>
             </el-tooltip>
         </el-space>
-        <el-table ref="tableRef" row-key="index" :data="messageStore.network"
+        <el-table ref="tableRef" row-key="index" :data="filterTableData"
             style="width: 100%;height: calc(100vh - 160px); ">
             <el-table-column prop="index" label="ID" sortable width="80" column-key="index" />
             <el-table-column prop="type" label="类型" width="100" :filters="[
@@ -80,7 +83,10 @@
                     <span>{{ scope.row.data }}</span>
                 </template>
             </el-table-column>
-            <el-table-column label="操作" width="100">
+            <el-table-column width="200">
+                <template #header>
+                  <el-input v-model="search" size="small" placeholder="搜索" clearable />
+                </template>
                 <template #default="scope">
                     <el-button @click="copy(scope.row.data)" size="small">
                         复制
@@ -92,7 +98,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import {computed, ref} from 'vue'
 import { ElMessage } from 'element-plus';
 import { useMessageStore } from '@/store/message';
 import commonUtils from '@/utils/common';
@@ -107,6 +113,16 @@ const old_data = ref('')
 const new_data = ref('')
 const change_list = ref([])
 const change_list_encode = ref([])
+const search = ref('')
+
+
+const filterTableData = computed(() =>
+    messageStore.network.filter(
+        (data) =>
+            !search.value ||
+            JSON.stringify(data).includes(search.value)
+    )
+)
 
 const addChange = () => {
     if (!new_data.value) {
@@ -181,6 +197,12 @@ const saveChange = () => {
 const copy = (item) => {
     navigator.clipboard.writeText(JSON.stringify(item))
     ElMessage.success('复制成功')
+}
+
+const startJsHookServer = () => {
+    Webview.sendMessageToHost({
+        cmd: 2026
+    })
 }
 
 </script>
