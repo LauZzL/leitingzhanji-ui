@@ -164,6 +164,42 @@ const constantRouterMap = [
               },
             ]
           },
+          {
+            path: '/framework/script',
+            name: 'Framework-Script',
+            component: () => import('@/views/framework/script/Index.vue'),
+            meta: {
+              title: '脚本',
+              icon: 'icon-javascript',
+              keepAlive: true,
+              isMenu: true
+            },
+            redirect: { name: 'Framework-Script-Editor' },
+            children: [
+              {
+                path: '/framework/script/editor',
+                name: 'Framework-Script-Editor',
+                component: () => import('@/views/framework/script/editor/Index.vue'),
+                meta: {
+                  title: '编辑',
+                  icon: '',
+                  keepAlive: true,
+                  isMenu: false,
+                }
+              },
+              {
+                path: '/framework/script/local',
+                name: 'Framework-Script-Local',
+                component: () => import('@/views/framework/script/local/Index.vue'),
+                meta: {
+                  title: '本地脚本',
+                  icon: '',
+                  keepAlive: true,
+                  isMenu: false,
+                }
+              },
+            ]
+          },
         ]
       }
     ]
