@@ -8,10 +8,12 @@
 import { ref } from 'vue';
 import ScriptEditor from "@/components/editor/ScriptEditor.vue";
 
-const code = ref("function hello(){\n" +
-    "  nem.logger('success', 'Hello World');\n" +
+const code = ref("function getUserInfo(){\n" +
+    "  return nem.getUser();\n" +
     "}\n" +
-    "hello();");
+    "const user = getUserInfo();\n" +
+    "nem.logger('info', user);"
+);
 
 
 </script>

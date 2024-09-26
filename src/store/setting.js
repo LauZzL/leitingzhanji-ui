@@ -30,7 +30,8 @@ export const useSettingStore = defineStore('setting', () => {
                 level: 1,
                 num: 1,
                 sleeps: 1000,
-                attack_timer: 5
+                attack_timer: 5,
+                is_hero: false,
             },
             cailiao_payload: {
                 cailiao: 0,
@@ -40,7 +41,8 @@ export const useSettingStore = defineStore('setting', () => {
             rule_payload: {
                 attack_rule: '95,96',
                 sleeps: 1000,
-                attack_timer: 5
+                attack_timer: 5,
+                is_hero: false,
             },
             gold_times: 100,
             enable_gold_times: false,
