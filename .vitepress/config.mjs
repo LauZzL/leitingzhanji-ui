@@ -16,13 +16,13 @@ export default defineConfig({
     ],
 
     sidebar: {
-      '/guide/':{
+      '/guide/': {
         items: [
           { text: '什么是LTZJ-NEM？', link: '/guide/what-is-ltzj-nem' },
           { text: '快速开始', link: '/guide/get-started' },
         ]
       },
-      '/packet/':{
+      '/packet/': {
         items: [
           { text: '什么是封包？', link: '/packet/what-is-packet' },
           { text: '导入封包', link: '/packet/import_packet' },
@@ -31,18 +31,34 @@ export default defineConfig({
           { text: '编译封包', link: '/packet/build' },
         ]
       },
-      '/javascript-api/':{
+      '/javascript-api/': {
         items: [
-          { text: '什么是JavaScriptApi？', link: '/javascript-api/what-is-javascript-api' },
+          {
+            text: 'API',
+            items: [
+              { text: '什么是JavaScript Api？', link: '/javascript-api/what-is-javascript-api' },
+              {
+                text: 'NEM API',
+                base: '/javascript-api/api-',
+                items: [
+                  { text: 'sleep', link: 'nem-sleep' },
+                  { text: 'logger', link: 'nem-logger' },
+                  { text: 'message', link: 'nem-message' },
+                  { text: 'getUser', link: 'nem-get-user' },
+                  { text: 'packet', link: 'nem-packet' },
+                ]
+              }
+            ]
+          }
         ]
       },
     },
-
     socialLinks: [
       { icon: 'github', link: 'https://github.com/LauZzL/leitingzhanji-ui' }
     ],
     editLink: {
-      pattern: 'https://github.com/LauZzL/leitingzhanji-docs/edit/main/:path'
+      pattern: 'https://github.com/LauZzL/leitingzhanji-docs/edit/main/:path',
+      text: '在 GitHub 上编辑此页面'
     }
   }
 })
