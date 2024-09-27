@@ -59,6 +59,7 @@ const nemStore = useNemStore();
 chrome.webview.addEventListener("message", function messageEvent(evt) {
   let data = evt.data
   data = JSON.parse(decodeURIComponent(data))
+  console.log(data)
   if (data.cmd == -1) {
     ElMessage({
       message: data.message,
@@ -83,6 +84,8 @@ chrome.webview.addEventListener("message", function messageEvent(evt) {
     loggerStore.add_packet(data.message)
   }else if (data.cmd == 1007) {
     nemStore.setNem(data.data)
+  }else if (data.cmd >= 3000 && data.cmd <= 3100) {
+    loggerStore.add_script(data.message)
   }
   return 
 })

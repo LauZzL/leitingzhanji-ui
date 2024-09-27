@@ -16,5 +16,11 @@ export const useLoggerStore = defineStore('logger', () => {
         packet_logger.value.push(`<span class="el-tag el-tag--info el-tag--light"><span class="el-tag__content">${commonUtils.getLocalDateTime()}</span><!--v-if--></span> ${log}`)
     }
 
-    return { logger, add, packet_logger, add_packet }
+    const script_logger = ref([])
+
+    const add_script = (log) => {
+        script_logger.value.push(`<span class="el-tag el-tag--info el-tag--light"><span class="el-tag__content">${commonUtils.getLocalDateTime()}</span><!--v-if--></span> ${log}`)
+    }
+
+    return { logger, add, packet_logger, add_packet, script_logger, add_script }
   })
