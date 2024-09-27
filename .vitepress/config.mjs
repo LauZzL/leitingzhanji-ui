@@ -20,6 +20,7 @@ export default defineConfig({
         items: [
           { text: '什么是LTZJ-NEM？', link: '/guide/what-is-ltzj-nem' },
           { text: '快速开始', link: '/guide/get-started' },
+          { text: '功能', link: '/guide/basic-function' },
         ]
       },
       '/packet/': {
@@ -46,6 +47,14 @@ export default defineConfig({
                   { text: 'message', link: 'nem-message' },
                   { text: 'getUser', link: 'nem-get-user' },
                   { text: 'packet', link: 'nem-packet' },
+                ]
+              },
+              {
+                text: '走马观花',
+                base: '/javascript-api/script-eg-',
+                items: [
+                  { text: '如何共享您的脚本？', link: 'how-to-share' },
+                  { text: '获取当前登录游戏用户信息', link: 'get-user-login' },
                 ]
               }
             ]
