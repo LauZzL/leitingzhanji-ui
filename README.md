@@ -22,7 +22,13 @@
 
 [Releases](https://github.com/LauZzL/leitingzhanji-ui/releases)
 
+## 官方文档
+
+[https://lauzzl.github.io/leitingzhanji-docs/](https://lauzzl.github.io/leitingzhanji-docs/)
+
 ## 支持功能
+
+> 修改数据需要[`js-hook`](https://github.com/LauZzL/leitingzhanji-jshookserver)支持。
 
 - 畅玩卡(月卡)特权
 - 防检测
@@ -34,6 +40,7 @@
   - 装备宝箱
   - 幸运转盘
 - 闯关
+  - 英雄难度
   - 单关卡攻打
   - 自定义攻打
   - 一键材料
@@ -132,6 +139,10 @@
 
 ![本地封包执行](https://s21.ax1x.com/2024/09/10/pAm0wxe.jpg)
 
+#### JavaScript 脚本扩展
+
+![JavaScript扩展脚本](https://iili.io/dQcTsK7.png)
+
 #### 其他
 
 ![其他](https://s21.ax1x.com/2024/09/10/pAmWYC9.jpg)
@@ -139,6 +150,10 @@
 ## 参考
 
 - [SunnyNet](https://github.com/qtgolang/SunnyNet)
+
+## 鸣谢
+
+- [@ASCIIX](https://github.com/ASCIIX) 提供数据支持
 
 ## Star History
 
