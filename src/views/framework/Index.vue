@@ -24,6 +24,7 @@ import { useUserStore } from "@/store/user";
 import { useShopStore } from "@/store/shop";
 import { useExecutorStore } from "@/store/executor";
 import { useNemStore } from '@/store/nem';
+import {useScriptStore} from "@/store/script.js";
 import { ElMessage } from 'element-plus';
 import { ElMessageBox } from 'element-plus';
 import Webview from '@/utils/webview'
@@ -55,6 +56,7 @@ const userStore = useUserStore();
 const shopStore = useShopStore();
 const executorStore = useExecutorStore();
 const nemStore = useNemStore();
+const scriptStore = useScriptStore();
 
 chrome.webview.addEventListener("message", function messageEvent(evt) {
   let data = evt.data
@@ -84,6 +86,12 @@ chrome.webview.addEventListener("message", function messageEvent(evt) {
     loggerStore.add_packet(data.message)
   }else if (data.cmd == 1007) {
     nemStore.setNem(data.data)
+  }else if (data.cmd == 3002) {
+    scriptStore.setScript(decodeURIComponent(atob(data.data.code)))
+    return
+  }else if (data.cmd == 3007) {
+    scriptStore.setScripts(data.data)
+    return
   }else if (data.cmd >= 3000 && data.cmd <= 3100) {
     loggerStore.add_script(data.message)
   }

@@ -19,11 +19,6 @@
                                v-model="settingStore.setting.level.level_payload.sleeps"
                                size="small" placeholder="请输入攻打间隔" clearable/>
             </el-form-item>
-            <el-form-item label="Timer">
-              <el-input-number style="width: 180px;" :step="1" :min="1"
-                               v-model="settingStore.setting.level.level_payload.attack_timer"
-                               size="small" placeholder="请输入整数" clearable/>
-            </el-form-item>
             <br>
             <el-form-item label="难度">
               <el-checkbox v-model="settingStore.setting.level.level_payload.is_hero">英雄</el-checkbox>
@@ -56,11 +51,6 @@
                                v-model="settingStore.setting.level.cailiao_payload.sleeps" size="small"
                                placeholder="请输入攻打间隔" clearable/>
             </el-form-item>
-            <el-form-item label="Timer">
-              <el-input-number style="width: 180px;" :step="1" :min="1"
-                               v-model="settingStore.setting.level.cailiao_payload.attack_timer"
-                               size="small" placeholder="请输入整数" clearable/>
-            </el-form-item>
             <br>
             <el-form-item label="操作">
               <el-space>
@@ -84,11 +74,6 @@
               <el-input-number style="width: 180px;" :step="100" :min="500"
                                v-model="settingStore.setting.level.rule_payload.sleeps" size="small"
                                placeholder="请输入攻打间隔" clearable/>
-            </el-form-item>
-            <el-form-item label="Timer">
-              <el-input-number style="width: 180px;" :step="1" :min="1"
-                               v-model="settingStore.setting.level.rule_payload.attack_timer"
-                               size="small" placeholder="请输入整数" clearable/>
             </el-form-item>
             <br>
             <el-form-item label="难度">

@@ -1,6 +1,6 @@
 <template>
   <div style="height: 100%; width: 100%">
-    <script-editor style="height: 100%;"></script-editor>
+    <script-editor></script-editor>
   </div>
 </template>
 

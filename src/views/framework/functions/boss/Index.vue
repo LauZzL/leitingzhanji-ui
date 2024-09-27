@@ -22,10 +22,6 @@
                 <el-input-number style="width: 100px;" :step="1" :min="1" v-model="settingStore.setting.boss.nums" size="small"
                     placeholder="请输入攻打次数" clearable />
             </el-form-item>
-            <el-form-item label="Timer">
-                <el-input-number style="width: 180px;" :step="1" :min="1" v-model="settingStore.setting.boss.attack_timer" size="small"
-                    placeholder="请输入整数" clearable />
-            </el-form-item>
             <br>
             <el-form-item>
                 <el-button type="primary" @click="attack">攻打</el-button>
