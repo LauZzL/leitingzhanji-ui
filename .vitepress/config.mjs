@@ -11,6 +11,7 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       { text: '快速开始', link: '/guide/what-is-ltzj-nem' },
+      { text: '使用手册', link: '/use-manual/index' },
       { text: '封包', link: '/packet/what-is-packet' },
       { text: 'API', link: '/javascript-api/what-is-javascript-api' },
     ],
@@ -55,6 +56,30 @@ export default defineConfig({
                 items: [
                   { text: '如何共享您的脚本？', link: 'how-to-share' },
                   { text: '获取当前登录游戏用户信息', link: 'get-user-login' },
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      '/use-manual/': {
+        items: [
+          {
+            items: [
+              { text: '使用手册', link: '/index' },
+              { text: '参与维护', link: '/use-manual/how-to-maintain' },
+              {
+                text: '功能介绍',
+                base: '/use-manual/functions-',
+                items: [
+                  { text: '日常-活跃度领取', link: 'day-activity-get' },
+                ]
+              },
+              {
+                text: '常见问题',
+                base: '/use-manual/questions-',
+                items: [
+                  { text: '不允许海外地区访问', link: 'banned-oversea-access' },
                 ]
               }
             ]
