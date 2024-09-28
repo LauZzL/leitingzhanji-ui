@@ -9,6 +9,9 @@
       <el-button @click="sendCmd({ cmd:205 })">幸运转盘</el-button>
       <el-button @click="sendCmd({ cmd:207 })">弹幕钻石</el-button>
       <el-button @click="sendCmd({ cmd:208 })">桌面启动钻石</el-button>
+      <el-button @click="sendCmd({ cmd:209 })">奖励-无尽宝箱x3</el-button>
+      <el-button @click="sendCmd({ cmd:210 })">奖励-100体力</el-button>
+      <el-button @click="sendCmd({ cmd:211 })">活跃度领取</el-button>
     </el-space>
   </div>
 </template>
