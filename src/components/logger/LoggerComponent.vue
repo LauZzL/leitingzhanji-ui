@@ -28,7 +28,7 @@ function scrollToBottom() {
 
 watch(props.logger, () => {
     nextTick(() => {
-        scrollToBottom();
+
     })
 })
 
