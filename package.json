@@ -13,7 +13,7 @@
     "@codemirror/lang-javascript": "^6.2.2",
     "@codemirror/theme-one-dark": "^6.1.2",
     "codemirror": "^6.0.1",
-    "element-plus": "^2.8.1",
+    "element-plus": "https://pkg.pr.new/element-plus/element-plus@0856227",
     "pinia": "^2.2.2",
     "vue": "^3.4.37",
     "vue-codemirror": "^6.1.1",
