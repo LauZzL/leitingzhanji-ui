@@ -39,6 +39,8 @@
   - 星际探索
   - 装备宝箱
   - 幸运转盘
+- PVP
+  - 一键攻打(金币场)
 - 闯关
   - 英雄难度
   - 单关卡攻打
@@ -57,11 +59,15 @@
   - 生命修改
   - 分数修改
 - 封包
+  - HTTP API
   - 数据监听
   - 数据修改
   - 封包流程编辑
   - 封包编译发布(是否可编辑、密码、授权UID)
   - 执行/导入封包
+- JavaScript 扩展
+  - 脚本编辑器
+  - 脚本执行
 - 其他
   - 无敌
   - 使用核弹不消耗
@@ -153,7 +159,8 @@
 
 ## 鸣谢
 
-- [@ASCIIX](https://github.com/ASCIIX) 提供数据支持
+- [@ASCIIX](https://github.com/ASCIIX)
+- [@Mofan1379](https://github.com/Mofan1379)
 
 ## Star History
 
