@@ -54,6 +54,8 @@
               <el-descriptions-item label="背包">{{ userStore?.user?.pack?userStore?.user?.pack:'未获取到' }}</el-descriptions-item>
               <el-descriptions-item label="金币">{{ userStore?.user?.gold?userStore?.user?.gold:'未获取到' }}</el-descriptions-item>
               <el-descriptions-item label="钻石">{{ userStore?.user?.diamonds?userStore?.user?.diamonds:'未获取到' }}</el-descriptions-item>
+              <el-descriptions-item label="PVP币">{{ userStore?.user?.pvp_coin?userStore?.user?.pvp_coin:'未获取到' }}</el-descriptions-item>
+              <el-descriptions-item label="今日PVP">{{ userStore?.user?.daily_pvp_coin?userStore?.user?.daily_pvp_coin:'未获取到' }}</el-descriptions-item>
               <el-descriptions-item label="氪金">{{ userStore?.user?.recharge?userStore?.user?.recharge:'未获取到' }}</el-descriptions-item>
               <el-descriptions-item label="战力">{{ userStore?.user?.zhanli?userStore?.user?.zhanli:'未获取到' }}</el-descriptions-item>
               <el-descriptions-item label="本周无尽">{{ userStore?.user?.week_score?userStore?.user?.week_score:'未获取到' }}</el-descriptions-item>
