@@ -1,5 +1,5 @@
 <template>
-    <el-scrollbar always class="logger" height="200px" ref="loggerScrollbarRefs">
+    <el-scrollbar always class="logger" height="200px">
         <div style="margin-top: 5px;" v-for="(log, index) in props.logger" :key="index" v-html="log">
 
         </div>
@@ -8,29 +8,12 @@
 </template>
 
 <script setup>
-import { nextTick, ref, watch } from 'vue';
 
 const props = defineProps({
     logger: Array
 })
 
-const loggerScrollbarRefs = ref(null);
 
-function scrollToBottom() {
-    const loggerHeight = document.querySelector('.el-scrollbar__view').scrollHeight;
-    const content = loggerScrollbarRefs.value;
-    if (!content) return;
-    content.scrollTo({
-        top: loggerHeight,
-        behavior: 'smooth',
-    })
-}
-
-watch(props.logger, () => {
-    nextTick(() => {
-
-    })
-})
 
 </script>
 

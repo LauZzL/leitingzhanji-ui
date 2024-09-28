@@ -2,6 +2,8 @@
     <div class="framework-functions-container">
         <div class="functions-header">
             <el-link :underline="false" @click="changePage('Framework-Functions-Day')">日常</el-link>
+          <el-divider direction="vertical" />
+          <el-link :underline="false" @click="changePage('Framework-Functions-PVP')">PVP</el-link>
             <el-divider direction="vertical" />
             <el-link :underline="false" @click="changePage('Framework-Functions-Levels')">闯关</el-link>
             <el-divider direction="vertical" />

@@ -63,6 +63,10 @@ export const useSettingStore = defineStore('setting', () => {
             engineHp: 5000000,
             score: 100,
         },
+        pvp: {
+            type: 0,
+            nums: 1
+        }
     })
 
     const setSetting = (e) => {

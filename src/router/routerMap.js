@@ -50,6 +50,17 @@ const constantRouterMap = [
                 }
               },
               {
+                path: '/framework/functions/pvp',
+                name: 'Framework-Functions-PVP',
+                component: () => import('@/views/framework/functions/pvp/Index.vue'),
+                meta: {
+                  title: 'PVP',
+                  icon: '',
+                  keepAlive: true,
+                  isMenu: false,
+                }
+              },
+              {
                 path: '/framework/functions/levels',
                 name: 'Framework-Functions-Levels',
                 component: () => import('@/views/framework/functions/levels/Index.vue'),
