@@ -134,7 +134,7 @@ const constantRouterMap = [
             component: () => import('@/views/framework/request/Index.vue'),
             meta: {
               title: '封包',
-              icon: 'icon-http',
+              icon: 'icon-HTTPFlow',
               keepAlive: true,
               isMenu: true
             },
@@ -181,7 +181,7 @@ const constantRouterMap = [
             component: () => import('@/views/framework/script/Index.vue'),
             meta: {
               title: '脚本',
-              icon: 'icon-javascript',
+              icon: 'icon-java-script',
               keepAlive: true,
               isMenu: true
             },
