@@ -2,6 +2,8 @@
     <div>
         <el-alert style="margin-bottom: 5px;" type="warning" show-icon
             :closable="false">防检测开启后需要到闯关模式进入关卡后看到日志提示防检测开启成功才有效，若未看到开启成功就进行游戏可能导致数据结算异常。</el-alert>
+      <el-alert style="margin-bottom: 5px;" type="error" show-icon
+                :closable="false">畅玩卡使用了拦截器，他是不安全的，所以现在默认关闭了他。</el-alert>
         <el-form :inline="true" :model="payload" class="demo-form-inline">
           <el-form-item>
             <el-checkbox v-model="settingStore.setting.other.changwanka" @change="modify('changwanka', settingStore.setting.other.changwanka)">畅玩卡(月卡)</el-checkbox>
