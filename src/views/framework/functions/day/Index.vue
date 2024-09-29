@@ -12,6 +12,9 @@
       <el-button @click="sendCmd({ cmd:209 })">奖励-无尽宝箱x3</el-button>
       <el-button @click="sendCmd({ cmd:210 })">奖励-100体力</el-button>
       <el-button @click="sendCmd({ cmd:211 })">活跃度领取</el-button>
+      <el-button @click="sendCmd({ cmd:212 })">白银宝箱10连抽</el-button>
+      <el-button @click="sendCmd({ cmd:213 })">黄金宝箱10连抽</el-button>
+      <el-button @click="sendCmd({ cmd:214 })">助战金币领取</el-button>
     </el-space>
   </div>
 </template>
