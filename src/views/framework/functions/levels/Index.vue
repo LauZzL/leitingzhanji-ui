@@ -14,14 +14,14 @@
                                size="small"
                                placeholder="请输入攻打次数" clearable/>
             </el-form-item>
+            <br>
+            <el-form-item label="难度">
+              <el-checkbox v-model="settingStore.setting.level.level_payload.is_hero">英雄</el-checkbox>
+            </el-form-item>
             <el-form-item label="间隔">
               <el-input-number style="width: 180px;" :step="100" :min="500"
                                v-model="settingStore.setting.level.level_payload.sleeps"
                                size="small" placeholder="请输入攻打间隔" clearable/>
-            </el-form-item>
-            <br>
-            <el-form-item label="难度">
-              <el-checkbox v-model="settingStore.setting.level.level_payload.is_hero">英雄</el-checkbox>
             </el-form-item>
             <br>
             <el-form-item label="操作">
@@ -35,7 +35,6 @@
       </el-tab-pane>
       <el-tab-pane label="材料" name="cailiao">
         <div>
-
           <el-form :inline="true" :model="settingStore.setting.level.cailiao_payload" class="demo-form-inline">
             <el-form-item label="材料">
               <el-radio-group v-model="settingStore.setting.level.cailiao_payload.cailiao">
@@ -70,14 +69,13 @@
                         placeholder="请输入规则"/>
             </el-form-item>
             <br>
+            <el-form-item label="难度">
+              <el-checkbox v-model="settingStore.setting.level.rule_payload.is_hero">英雄</el-checkbox>
+            </el-form-item>
             <el-form-item label="间隔">
               <el-input-number style="width: 180px;" :step="100" :min="500"
                                v-model="settingStore.setting.level.rule_payload.sleeps" size="small"
                                placeholder="请输入攻打间隔" clearable/>
-            </el-form-item>
-            <br>
-            <el-form-item label="难度">
-              <el-checkbox v-model="settingStore.setting.level.rule_payload.is_hero">英雄</el-checkbox>
             </el-form-item>
             <br>
             <el-form-item label="操作">
@@ -92,8 +90,12 @@
       <el-tab-pane label="其他" name="other">
         <div>
           <el-form :inline="true" class="demo-form-inline">
-            <el-form-item>
-              <el-checkbox v-model="settingStore.setting.level.three_two" @change="toggleThree">3经验双倍</el-checkbox>
+            <el-form-item label="双倍领取">
+              <el-radio-group v-model="settingStore.setting.level.two_gain" @change="toggleTwoGain">
+                <el-radio value="0">关闭</el-radio>
+                <el-radio value="1">任何情况</el-radio>
+                <el-radio value="2">3经验双倍</el-radio>
+              </el-radio-group>
             </el-form-item>
             <br>
             <el-alert type="warning" style="margin-bottom: 10px;" :closable="false">
@@ -130,10 +132,10 @@ const stop = (e) => {
   })
 }
 
-const toggleThree = (e) => {
+const toggleTwoGain = (e) => {
   Webview.sendMessageToHost({
     cmd: 701,
-    key: "three_two",
+    key: "two_gain",
     value: e
   })
 }

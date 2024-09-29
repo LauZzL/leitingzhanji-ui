@@ -32,6 +32,7 @@ export const useSettingStore = defineStore('setting', () => {
                 sleeps: 1000,
                 attack_timer: 5,
                 is_hero: false,
+                two_gain: 0,
             },
             cailiao_payload: {
                 cailiao: 0,
