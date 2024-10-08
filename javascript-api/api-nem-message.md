@@ -4,8 +4,8 @@
 
 ### nem.message(type, message)
 
-- type: 提示类型('success' | 'warning' | 'info' | 'error')
-- message: 提示内容
+- type <Badge type="info" text="String" /> 提示类型('success' | 'warning' | 'info' | 'error')
+- message <Badge type="info" text="String" /> 提示内容
 
 
 ```javascript

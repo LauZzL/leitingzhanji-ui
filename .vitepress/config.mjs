@@ -43,6 +43,8 @@ export default defineConfig({
                 text: 'NEM API',
                 base: '/javascript-api/api-',
                 items: [
+                  { text: 'prompt', link: 'nem-prompt' },
+                  { text: 'confirm', link: 'nem-confirm' },
                   { text: 'sleep', link: 'nem-sleep' },
                   { text: 'logger', link: 'nem-logger' },
                   { text: 'message', link: 'nem-message' },

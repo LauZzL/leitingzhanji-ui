@@ -4,8 +4,8 @@
 
 ### nem.logger(type, message)
 
-- type: 日志类型('primary' | 'success' | 'warning' | 'danger' | 'info')
-- message: 日志内容
+- type <Badge type="info" text="String" /> 日志类型('primary' | 'success' | 'warning' | 'danger' | 'info')
+- message <Badge type="info" text="String" /> 日志内容
 
 
 ```javascript

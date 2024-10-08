@@ -4,8 +4,8 @@
 
 ### nem.prompt(title,message)
 
-- title <String> - 提示框标题
-- message <String> - 提示框内容
+- title <Badge type="info" text="String" /> 提示框标题
+- message <Badge type="info" text="String" /> 提示框内容
 
 ```javascript
 const flag = nem.prompt('提示','是否要双倍领取材料？');

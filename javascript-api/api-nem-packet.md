@@ -14,7 +14,7 @@ send会自动将一些模板占位符替换，例如`{uid}`、`{sid}`，你可�
 
 ### nem.packet.send(payload)
 
-- payload: 经过JSON.stringify后的JSON字符串
+- payload <Badge type="info" text="String" /> 经过JSON.stringify后的JSON字符串
 
 
 ```javascript
@@ -29,7 +29,7 @@ nem.logger('info', result)
 
 ### nem.packet.gain2json(gain)
 
-- gain: 封包返回的gain值(eg: M2x20)
+- gain <Badge type="info" text="String" /> 封包返回的gain值(eg: M2x20)
 
 ```javascript
 const gain = `M2x20#`

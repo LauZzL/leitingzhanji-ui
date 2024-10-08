@@ -4,7 +4,7 @@
 
 ### nem.sleep(time)
 
-- time: 毫秒(1000=1秒)
+- time <Badge type="info" text="Integer" /> 毫秒(1000=1秒)
 
 ```javascript
 nem.logger('info', '等待1秒后再输出下一句');
