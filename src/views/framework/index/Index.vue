@@ -1,9 +1,6 @@
 <template>
   <div class="framework-index-container">
     <div class="framework-index-desc">
-      <h1>
-        网易云音乐3代金色天际线
-      </h1>
       <el-text class="mx-1" type="danger">该项目仅供学习交流，纯免费项目，请勿用于非法行为，谨防金钱交易。</el-text>
       <br>
       <el-text>
@@ -188,7 +185,7 @@ const getUserInfo = () => {
 }
 
 .framework-index-desc {
-  margin: 30px 0 10px;
+  margin: 10px 0 10px;
 
 }
 

@@ -64,6 +64,7 @@ chrome.webview.addEventListener("message", function messageEvent(evt) {
   console.log(data)
   if (data.cmd == -1) {
     ElMessage({
+      showClose: true,
       message: data.message,
       type: data.type
     })
