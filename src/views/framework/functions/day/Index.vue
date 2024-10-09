@@ -25,6 +25,29 @@
           <el-button @click="sendCmd({ cmd:211 })">活跃度领取</el-button>
         </el-space>
       </el-collapse-item>
+      <el-collapse-item title="贵族奖励" name="5">
+        <el-space wrap>
+          <div>
+            <el-input-number v-model="vip_level" :min="0" :max="8">
+              <template #suffix>
+                <span>贵族</span>
+              </template>
+            </el-input-number>
+          </div>
+          <el-button @click="sendCmd({ cmd:215, vip_level: vip_level })">贵族奖励领取</el-button>
+        </el-space>
+      </el-collapse-item>
+      <el-collapse-item title="CDK领取" name="6">
+        <el-space wrap>
+          <div>
+            <el-input v-model="settingStore.setting.cdk_str" placeholder="请输入CDK，每行一个" type="textarea">
+
+            </el-input>
+          </div>
+          <br>
+          <el-button @click="exchangeCDK">CDK领取</el-button>
+        </el-space>
+      </el-collapse-item>
       <el-collapse-item title="宝箱抽奖(消耗钥匙)" name="4">
         <el-space wrap>
           <div>
@@ -43,14 +66,18 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import {ref} from 'vue'
 import  Webview from "@/utils/webview"
+import {useSettingStore} from "@/store/setting.js";
+
+const settingStore = useSettingStore();
 
 const sendCmd = (data) => {
     Webview.sendMessageToHost(data)
 }
 
 const box_num = ref(1);
+const vip_level = ref(0);
 
 const activeNames = ref(['1'])
 
@@ -60,6 +87,11 @@ const content_height = ref(window.innerHeight - 360)
 window.onresize = () => {
   content_height.value = window.innerHeight - 360;
 }
+
+const exchangeCDK = () => {
+  sendCmd({ cmd:216, cdks: settingStore.setting.cdk_str.split(/\s+/) })
+}
+
 
 </script>
 

@@ -68,7 +68,8 @@ export const useSettingStore = defineStore('setting', () => {
         pvp: {
             type: 0,
             nums: 1
-        }
+        },
+        cdk_str: ''
     })
 
     const setSetting = (e) => {

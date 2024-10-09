@@ -25,6 +25,7 @@ import { useShopStore } from "@/store/shop";
 import { useExecutorStore } from "@/store/executor";
 import { useNemStore } from '@/store/nem';
 import {useScriptStore} from "@/store/script.js";
+import {useSettingStore} from "@/store/setting.js";
 import { ElMessage } from 'element-plus';
 import { ElMessageBox } from 'element-plus';
 import Webview from '@/utils/webview'
@@ -57,6 +58,7 @@ const shopStore = useShopStore();
 const executorStore = useExecutorStore();
 const nemStore = useNemStore();
 const scriptStore = useScriptStore();
+const settingStore = useSettingStore();
 
 chrome.webview.addEventListener("message", function messageEvent(evt) {
   let data = evt.data
@@ -68,6 +70,8 @@ chrome.webview.addEventListener("message", function messageEvent(evt) {
       message: data.message,
       type: data.type
     })
+  }else if (data.cmd == 10216) {
+    settingStore.setting.cdk_str = data.data.join('\n')
   }else if(data.cmd == 77){
     userStore.setUser(data.data)
   }else if(data.cmd == 999){
