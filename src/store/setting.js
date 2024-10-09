@@ -37,7 +37,8 @@ export const useSettingStore = defineStore('setting', () => {
             cailiao_payload: {
                 cailiao: 0,
                 sleeps: 1000,
-                attack_timer: 5
+                attack_timer: 5,
+                vip_level: 0,
             },
             rule_payload: {
                 attack_rule: '95,96',

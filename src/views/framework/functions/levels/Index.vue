@@ -50,6 +50,13 @@
                                v-model="settingStore.setting.level.cailiao_payload.sleeps" size="small"
                                placeholder="请输入攻打间隔" clearable/>
             </el-form-item>
+            <el-form-item label="贵族">
+              <el-radio-group v-model="settingStore.setting.level.cailiao_payload.vip_level">
+                <el-radio :value="0">默认</el-radio>
+                <el-radio :value="1">V4及以上</el-radio>
+                <el-radio :value="2">V8</el-radio>
+              </el-radio-group>
+            </el-form-item>
             <br>
             <el-form-item label="操作">
               <el-space>
