@@ -20,7 +20,7 @@ const props = defineProps({
 <style scoped>
 .logger {
     padding-left: 10px;
-    border: 1px solid #ccc;
+    border: max(1px, 0.0625rem) solid #3d444d !important;
 }
 
 .el-scrollbar {
