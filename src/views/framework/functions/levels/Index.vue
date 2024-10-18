@@ -60,8 +60,8 @@
             <br>
             <el-form-item label="操作">
               <el-space>
-                <el-button type="primary" @click="attack(50, settingStore.setting.level.cailiao_payload)">攻打
-                </el-button>
+                <el-button type="primary" @click="attack(50, settingStore.setting.level.cailiao_payload)">攻打</el-button>
+                <el-button type="warning" @click="stop(53)">停止</el-button>
               </el-space>
             </el-form-item>
           </el-form>
