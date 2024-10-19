@@ -9,9 +9,13 @@
         </el-radio-group>
       </el-form-item>
       <br>
-      <el-form-item label="次数">
+      <el-form-item label="成功次数">
         <el-input-number style="width: 100px;" :step="1" :min="1" v-model="settingStore.setting.pvp.nums" size="small"
-                         placeholder="请输入次数" clearable />
+                         placeholder="请输入成功次数" clearable />
+      </el-form-item>
+      <el-form-item label="最大匹配次数">
+        <el-input-number style="width: 200px;" :step="1" :min="1" v-model="settingStore.setting.pvp.max_match_num" size="small"
+                         placeholder="超过时则会自动停止" clearable />
       </el-form-item>
       <br>
       <el-form-item>
@@ -32,6 +36,7 @@ const attack = () => {
     cmd: 4002,
     type: settingStore.setting.pvp.type,
     nums: settingStore.setting.pvp.nums,
+    max_match_num: settingStore.setting.pvp.max_match_num
   })
 }
 

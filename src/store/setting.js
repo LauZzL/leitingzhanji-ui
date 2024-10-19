@@ -67,7 +67,8 @@ export const useSettingStore = defineStore('setting', () => {
         },
         pvp: {
             type: 0,
-            nums: 1
+            nums: 1,
+            max_match_num: 5
         },
         cdk_str: '',
         backpack: {
