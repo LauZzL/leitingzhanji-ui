@@ -1,16 +1,24 @@
 <script setup>
 
+import {ref} from "vue";
+
 const defaultProps = defineProps({
   item: Object,
   type: Number
 })
+
+const imgUrl = ref(defaultProps.item.icon?.url)
+
+const load2img = (e) => {
+  imgUrl.value =  defaultProps.item.icon?.url2
+}
 
 </script>
 
 <template>
   <div class="backpack-item">
     <div class="backpack-item-image">
-      <el-image style="width: 80px; height: 80px;" src="">
+      <el-image style="width: 80px; height: 80px;" :src="imgUrl" loading="lazy" :lazy="true" @error="load2img">
       </el-image>
       <el-text class="backpack-item-level" v-if="type == 0 && item.level">
         lv.{{ item.level }}
