@@ -20,16 +20,19 @@
     </div>
     <div class="framework-index-opration">
       <el-card>
-        <el-space>
-          <el-button @click="initSunnyNetCore" plain>
-            <svg-icon style="width: 16px; height: 16px;"
-                      iconName="icon-chushihua"/>&nbsp;初始化
-          </el-button>
-          <el-button @click="closeSunnyNetCore" plain>
-            <svg-icon style="width: 16px; height: 16px;"
-                      iconName="icon-guanbichushihua"/>&nbsp;关闭
-          </el-button>
-        </el-space>
+        <div style="display: flex;justify-content: space-between;">
+          <el-space>
+            <el-button @click="initSunnyNetCore" plain>
+              <svg-icon style="width: 16px; height: 16px;"
+                        iconName="icon-chushihua"/>&nbsp;初始化
+            </el-button>
+            <el-button @click="closeSunnyNetCore" plain>
+              <svg-icon style="width: 16px; height: 16px;"
+                        iconName="icon-guanbichushihua"/>&nbsp;关闭
+            </el-button>
+          </el-space>
+          <el-button circle :icon="isDark ? Moon : Sunny" @click="toggleDark"></el-button>
+        </div>
       </el-card>
     </div>
     <div class="framework-index-user">
@@ -119,19 +122,19 @@
 </template>
 
 <script setup>
+import {Refresh} from '@element-plus/icons-vue'
 import {useUserStore} from '@/store/user';
 import {useSettingStore} from "@/store/setting.js";
 import {useBackPackStore} from "@/store/backpack.js";
-import {Refresh} from '@element-plus/icons-vue'
 import Webview from '@/utils/webview'
+import {useDark, useToggle} from '@vueuse/core'
+import {Sunny, Moon} from '@element-plus/icons-vue';
 import {ElMessage} from 'element-plus';
-import {useDark} from '@vueuse/core'
 import {nextTick, ref} from 'vue'
 import BackPackItem from "@/components/common/BackPackItem.vue";
 
 
 const isDark = useDark()
-
 
 
 const userStore = useUserStore();
