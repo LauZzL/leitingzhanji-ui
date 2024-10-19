@@ -69,7 +69,10 @@ export const useSettingStore = defineStore('setting', () => {
             type: 0,
             nums: 1
         },
-        cdk_str: ''
+        cdk_str: '',
+        backpack: {
+            activeName: 'equips'
+        }
     })
 
     const setSetting = (e) => {

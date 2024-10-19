@@ -26,12 +26,14 @@ import { useExecutorStore } from "@/store/executor";
 import { useNemStore } from '@/store/nem';
 import {useScriptStore} from "@/store/script.js";
 import {useSettingStore} from "@/store/setting.js";
+import {useBackPackStore} from "@/store/backpack.js";
 import { ElMessage } from 'element-plus';
 import { ElMessageBox } from 'element-plus';
 import Webview from '@/utils/webview'
 
 import { reactive, watch } from 'vue'
 import { useDark } from '@vueuse/core'
+import gain from "@/utils/gain";
 
 const isDark = useDark()
 
@@ -59,6 +61,7 @@ const executorStore = useExecutorStore();
 const nemStore = useNemStore();
 const scriptStore = useScriptStore();
 const settingStore = useSettingStore();
+const backpackStore = useBackPackStore();
 
 chrome.webview.addEventListener("message", function messageEvent(evt) {
   let data = evt.data
@@ -74,6 +77,8 @@ chrome.webview.addEventListener("message", function messageEvent(evt) {
     settingStore.setting.cdk_str = data.data.join('\n')
   }else if(data.cmd == 77){
     userStore.setUser(data.data)
+    backpackStore.backpack.items = gain.json_parse4equips(data.data.items)
+    backpackStore.backpack.equips = gain.json_parse4equips(data.data.equips)
   }else if(data.cmd == 999){
     hasUpdate(data.message)
   }else if (data.cmd == 301 && messageStore.capture) {
