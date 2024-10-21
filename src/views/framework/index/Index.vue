@@ -4,7 +4,11 @@
       <el-text class="mx-1" type="danger">该项目仅供学习交流，纯免费项目，请勿用于非法行为，谨防金钱交易。</el-text>
       <br>
       <el-text>
-        Star 该项目
+        加入
+        <el-link type="primary" target="_blank"
+                 href="https://kook.top/iTY8us">KOOK
+        </el-link> 频道在线交流
+        ，Star 该项目
         <el-link type="primary" target="_blank"
                  href="https://github.com/LauZzL/leitingzhanji-ui">Github
         </el-link>
@@ -13,7 +17,7 @@
                  href="https://github.com/LauZzL/leitingzhanji-ui/issues">Github Issues
         </el-link>
         <br>
-        <el-alert style="margin-top: 5px;" type="warning" show-icon :closable="false">
+        <el-alert style="margin-top: 5px;" type="warning" show-icon :closable="true">
           部分情况亮色模式下日志输出可能影响阅读，建议使用暗黑模式
         </el-alert>
       </el-text>
