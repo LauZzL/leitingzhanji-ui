@@ -57,6 +57,7 @@ export const useSettingStore = defineStore('setting', () => {
             fhbjzs: false,
             wudi: false,
             changwanka: false,
+            kapipei: false,
         },
         shuzhi: {
             engineDamage: 100000,
