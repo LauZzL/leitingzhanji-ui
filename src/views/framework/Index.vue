@@ -1,5 +1,6 @@
 <template>
   <el-watermark class="common-layout" :color="font.color" :content="['网易云音乐3']">
+    <music-player></music-player>
     <el-container>
       <el-aside style="width: auto;">
         <menu-component style="height: 100%"></menu-component>
@@ -34,6 +35,7 @@ import Webview from '@/utils/webview'
 import { reactive, watch } from 'vue'
 import { useDark } from '@vueuse/core'
 import gain from "@/utils/gain";
+import MusicPlayer from "@/components/common/MusicPlayer.vue";
 
 const isDark = useDark()
 
@@ -77,10 +79,33 @@ chrome.webview.addEventListener("message", function messageEvent(evt) {
     settingStore.setting.cdk_str = data.data.join('\n')
   }else if(data.cmd == 77){
     userStore.setUser(data.data)
+    backpackStore.backpack.equips = [];
+    backpackStore.backpack.items = [];
     backpackStore.backpack.items = gain.json_parse4equips(data.data.items)
     backpackStore.backpack.equips = gain.json_parse4equips(data.data.equips)
   }else if(data.cmd == 999){
     hasUpdate(data.message)
+  }else if(data.cmd == 153826){
+    const lucky_gain = gain.gain_raw2json(data.data.gain_raw, true)
+    const used_items = data.data.used_items
+    const luckyValue = data.data.luckyValue
+    const luckyType = data.data.luckyType
+    // 将最新的幸运值更新到本地
+    userStore?.user?.allLuckys.forEach(lucky => {
+      if (lucky.type === Number(luckyType)) {
+        lucky.luckyValue = Number(luckyValue)
+      }
+    })
+    // 获取使用的物品的id集合
+    let usedItemIds = new Set(used_items.map(item => item.id));
+    // 过滤掉所有物品中使用的物品
+    backpackStore.backpack.equips = backpackStore.backpack.equips.filter(item => !usedItemIds.has(item.data.id));
+    backpackStore.backpack.lucky = lucky_gain
+  }else if(data.cmd == 153827){
+    const used_items = data.data.used_items
+    let usedItemIds = new Set(used_items.map(item => item.id));
+    backpackStore.backpack.equips = backpackStore.backpack.equips.filter(item => !usedItemIds.has(item.data.id))
+    backpackStore.backpack.items = backpackStore.backpack.items.filter(item => !usedItemIds.has(item.data.id))
   }else if (data.cmd == 301 && messageStore.capture) {
     data.index = messageStore.network.length + 1
     messageStore.addNetwork(data)
