@@ -4,7 +4,8 @@ import { ref } from 'vue'
 export const useBackPackStore = defineStore('backpack', () => {
     const backpack = ref({
         items: [],
-        equips: []
+        equips: [],
+        lucky: [],
     })
 
     const setBackPack = (e) => {

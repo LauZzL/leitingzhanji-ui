@@ -101,27 +101,6 @@
         </div>
       </el-card>
     </div>
-    <div class="framework-index-backpack">
-      <el-card style="width: 100%">
-        <template #header>
-          <div class="card-header">
-            <span>背包</span>
-          </div>
-        </template>
-        <el-tabs v-model="settingStore.setting.backpack.activeName" class="demo-tabs">
-          <el-tab-pane label="装备" name="equips">
-            <el-space wrap v-if="backPackStore.backpack?.equips">
-              <back-pack-item v-for="item in backPackStore.backpack.equips" :item='item' :type="0"></back-pack-item>
-            </el-space>
-          </el-tab-pane>
-          <el-tab-pane label="物品" name="items">
-            <el-space wrap v-if="backPackStore.backpack?.items">
-              <back-pack-item v-for="item in backPackStore.backpack.items" :item='item' :type="1"></back-pack-item>
-            </el-space>
-          </el-tab-pane>
-        </el-tabs>
-      </el-card>
-    </div>
   </div>
 </template>
 
@@ -129,13 +108,11 @@
 import {Refresh} from '@element-plus/icons-vue'
 import {useUserStore} from '@/store/user';
 import {useSettingStore} from "@/store/setting.js";
-import {useBackPackStore} from "@/store/backpack.js";
 import Webview from '@/utils/webview'
 import {useDark, useToggle} from '@vueuse/core'
 import {Sunny, Moon} from '@element-plus/icons-vue';
 import {ElMessage} from 'element-plus';
 import {nextTick, ref} from 'vue'
-import BackPackItem from "@/components/common/BackPackItem.vue";
 
 
 const isDark = useDark()
@@ -143,7 +120,6 @@ const isDark = useDark()
 
 const userStore = useUserStore();
 const settingStore = useSettingStore();
-const backPackStore = useBackPackStore();
 
 const nickname = () => {
   if (userStore?.user?.nickname?.length > 10) {
@@ -229,10 +205,6 @@ const getUserInfo = () => {
   align-items: center;
   margin-top: 10px;
   height: auto;
-}
-
-.framework-index-backpack {
-  margin-top: 10px;
 }
 
 .framework-index-user-left-avatar {
