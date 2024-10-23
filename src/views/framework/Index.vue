@@ -68,7 +68,6 @@ const backpackStore = useBackPackStore();
 chrome.webview.addEventListener("message", function messageEvent(evt) {
   let data = evt.data
   data = JSON.parse(decodeURIComponent(data))
-  console.log(data)
   if (data.cmd == -1) {
     ElMessage({
       showClose: true,
@@ -85,6 +84,8 @@ chrome.webview.addEventListener("message", function messageEvent(evt) {
     backpackStore.backpack.equips = gain.json_parse4equips(data.data.equips)
   }else if(data.cmd == 999){
     hasUpdate(data.message)
+  }else if(data.cmd == 233){
+    settingStore.setting.autoDay = data.data
   }else if(data.cmd == 153826){
     const lucky_gain = gain.gain_raw2json(data.data.gain_raw, true)
     const used_items = data.data.used_items

@@ -39,6 +39,17 @@ const constantRouterMap = [
                         redirect: {name: 'Framework-Functions-Day'},
                         children: [
                             {
+                                path: '/framework/functions/autoday',
+                                name: 'Framework-Functions-AutoDay',
+                                component: () => import('@/views/framework/functions/autoday/Index.vue'),
+                                meta: {
+                                    title: '自动化',
+                                    icon: '',
+                                    keepAlive: true,
+                                    isMenu: false,
+                                }
+                            },
+                            {
                                 path: '/framework/functions/day',
                                 name: 'Framework-Functions-Day',
                                 component: () => import('@/views/framework/functions/day/Index.vue'),

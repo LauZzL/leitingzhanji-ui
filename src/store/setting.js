@@ -74,6 +74,39 @@ export const useSettingStore = defineStore('setting', () => {
         cdk_str: '',
         backpack: {
             activeName: 'equips'
+        },
+        autoDay: {
+            c: [],
+            a: {
+                enable: false,
+                attack_rule: "95,95,95,95,95",
+                is_hero: false,
+            },
+            b: {
+                n: [
+                    {
+                        label: "天龙座(装甲)",
+                        type: 'loong',
+                        value: 1,
+                        nums: 0,
+                    },{
+                        label: "白鸟座(副武器)",
+                        type: 'bird',
+                        value: 2,
+                        nums: 0,
+                    },{
+                        label: "天马座(战机)",
+                        type: 'horse',
+                        value: 0,
+                        nums: 0,
+                    },{
+                        label: "仙女座(僚机)",
+                        type: 'female',
+                        value: 3,
+                        nums: 0,
+                    },
+                ]
+            },
         }
     })
 
