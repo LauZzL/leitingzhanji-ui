@@ -9,8 +9,12 @@
 - 畅玩卡(月卡)特权
 - 防检测
 - 免广告
-- 背包展示
+- 背包
+  - 查看
+  - 合成
+  - 出售
 - 快速抽奖
+- 自动化任务
 - 日常
   - 体力
   - 商城
@@ -53,9 +57,14 @@
   - 无敌
   - 使用核弹不消耗
   - 复活免钻石
+  - 防卡匹配
 
 
 ## 预览
+
+#### 更直观的输出奖励
+
+![输出奖励演示](https://iili.io/2Khb28x.png)
 
 #### 首页
 
@@ -66,6 +75,22 @@
 ![背包展示](https://iili.io/22SaGN2.png)
 
 ![背包展示](https://iili.io/22Sa8NV.png)
+
+#### 背包合成
+
+![背包合成](https://iili.io/2KhstSV.png)
+
+![背包合成](https://iili.io/2KhtDqg.png)
+
+#### 背包出售
+
+![1](https://iili.io/2KhpqEF.png)
+![2](https://iili.io/2Khpi3g.png)
+![3](https://iili.io/2KhygRf.png)
+
+#### 自动化任务
+
+![自动化](https://iili.io/2Kj2N3P.png)
 
 #### 日常
 
