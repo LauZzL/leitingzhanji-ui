@@ -17,6 +17,8 @@
       <el-divider direction="vertical"/>
       <el-link :underline="false" @click="changePage('Framework-Functions-Shuzhi')">数值</el-link>
       <el-divider direction="vertical"/>
+      <el-link :underline="false" @click="changePage('Framework-Functions-Gold')">金币</el-link>
+      <el-divider direction="vertical"/>
       <el-link :underline="false" @click="changePage('Framework-Functions-Other')">其他</el-link>
     </div>
     <el-divider/>

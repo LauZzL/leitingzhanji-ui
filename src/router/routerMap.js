@@ -127,11 +127,22 @@ const constantRouterMap = [
                                 }
                             },
                             {
+                                path: '/framework/functions/gold',
+                                name: 'Framework-Functions-Gold',
+                                component: () => import('@/views/framework/functions/gold/Index.vue'),
+                                meta: {
+                                    title: '金币',
+                                    icon: '',
+                                    keepAlive: true,
+                                    isMenu: false,
+                                }
+                            },
+                            {
                                 path: '/framework/functions/other',
                                 name: 'Framework-Functions-Other',
                                 component: () => import('@/views/framework/functions/other/Index.vue'),
                                 meta: {
-                                    title: 'BOSS关卡',
+                                    title: '其他',
                                     icon: '',
                                     keepAlive: true,
                                     isMenu: false,
