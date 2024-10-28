@@ -2,8 +2,11 @@
 
 获取当前登录用户信息。
 
-### nem.getUser()
+### nem.getUser(DEBUG)
 
+- DEBUG <Badge type="info" text="Boolean" /> 更详细的信息
+
+> DEBUG为可选参数，当DEBUG为true时，返回的用户信息会包含更多字段：`所有装备`、`所有物品`、`幸运值`。
 
 ```javascript
 const userInfo = nem.getUser();
