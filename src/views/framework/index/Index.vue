@@ -101,6 +101,16 @@
         </div>
       </el-card>
     </div>
+    <div class="framework-index-advert">
+      <el-text type="primary" size="large">你的心情有没有好一点</el-text>
+      <el-collapse style="margin-top: 10px">
+        <el-collapse-item title="(Ad)每天限领1000份，外卖免费吃！" name="1">
+          <div>
+            <el-image :src="ad_url"></el-image>
+          </div>
+        </el-collapse-item>
+      </el-collapse>
+    </div>
   </div>
 </template>
 
@@ -113,6 +123,7 @@ import {useDark, useToggle} from '@vueuse/core'
 import {Sunny, Moon} from '@element-plus/icons-vue';
 import {ElMessage} from 'element-plus';
 import {nextTick, ref} from 'vue'
+import ad_image from '@/assets/img/advert-00001.jpg'
 
 
 const isDark = useDark()
@@ -120,6 +131,8 @@ const isDark = useDark()
 
 const userStore = useUserStore();
 const settingStore = useSettingStore();
+
+const ad_url = ref(new URL(ad_image, import.meta.url))
 
 const nickname = () => {
   if (userStore?.user?.nickname?.length > 10) {
@@ -242,5 +255,9 @@ const getUserInfo = () => {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+.framework-index-advert {
+  margin-top: 10px;
 }
 </style>

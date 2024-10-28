@@ -29,7 +29,7 @@ import {useScriptStore} from "@/store/script.js";
 import {useSettingStore} from "@/store/setting.js";
 import {useBackPackStore} from "@/store/backpack.js";
 import { ElMessage } from 'element-plus';
-import { ElMessageBox } from 'element-plus';
+import { ElMessageBox,ElNotification } from 'element-plus';
 import Webview from '@/utils/webview'
 
 import { reactive, watch } from 'vue'
@@ -74,6 +74,14 @@ chrome.webview.addEventListener("message", function messageEvent(evt) {
       message: data.message,
       type: data.type
     })
+  }else if (data.cmd == -2) {
+    ElNotification({
+      title: '一言',
+      message: data.message,
+      type: 'success',
+    })
+  }else if (data.cmd == -3) {
+    settingStore.setting.player_id = data.message
   }else if (data.cmd == 10216) {
     settingStore.setting.cdk_str = data.data.join('\n')
   }else if(data.cmd == 77){
