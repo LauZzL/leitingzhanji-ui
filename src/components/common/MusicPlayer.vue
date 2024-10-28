@@ -2,17 +2,27 @@
   <div class="music-player-container">
     <div class="indicator" @mouseenter="showPlayer = true" @mouseleave="showPlayer = false"></div>
     <div class="player" v-show="showPlayer">
-      <iframe @mouseenter="showPlayer = true" @mouseleave="showPlayer = false" frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="110"
-              :src="playerUrl"></iframe>
+      <iframe v-if="settingStore.setting.player_id > 0" @mouseenter="showPlayer = true" @mouseleave="showPlayer = false" frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="110"
+              :src="`https://music.163.com/outchain/player?type=0&id=${settingStore.setting.player_id}&auto=1&height=90`"></iframe>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import {onMounted, ref} from 'vue'
+import {useSettingStore} from "@/store/setting.js";
+import Webview from "@/utils/webview.js";
 
-const playerUrl = ref('https://music.163.com/outchain/player?type=0&id=7338953439&auto=1&height=90')
+const settingStore = useSettingStore()
+
 const showPlayer = ref(false)
+
+onMounted(()=> {
+  Webview.sendMessageToHost({
+    cmd: -3
+  })
+})
+
 </script>
 
 <style scoped>

@@ -107,7 +107,8 @@ export const useSettingStore = defineStore('setting', () => {
                     },
                 ]
             },
-        }
+        },
+        player_id: -1,
     })
 
     const setSetting = (e) => {
