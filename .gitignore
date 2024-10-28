@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+src/utils/gain.js
+src/assets/data/*
 
 # Editor directories and files
 .vscode/*
