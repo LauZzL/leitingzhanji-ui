@@ -107,6 +107,29 @@ export const useSettingStore = defineStore('setting', () => {
                     },
                 ]
             },
+            h: {
+                n: [
+                    {
+                        label: "陨石陷阱(金币)",
+                        type: 'meteorite',
+                        id: 0,
+                        value: [],
+                        nums: 0,
+                    },{
+                        label: "激光迷宫(经验)",
+                        type: 'laser',
+                        id: 1,
+                        value: [1,2],
+                        nums: 0,
+                    },{
+                        label: "导弹猎场(材料)",
+                        type: 'missile',
+                        id: 2,
+                        value: [0,1,2],
+                        nums: 0,
+                    }
+                ]
+            },
         },
         player_id: -1,
     })

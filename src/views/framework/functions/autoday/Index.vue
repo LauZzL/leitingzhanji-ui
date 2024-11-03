@@ -47,8 +47,26 @@ const editAuto = (e) => {
         <el-input style="margin-left: 10px" placeholder="请输入规则" v-model="settingStore.setting.autoDay.a.attack_rule"></el-input>
       </el-form-item>
       <el-form-item label="BOSS">
-        <el-form-item v-for="item in settingStore.setting.autoDay.b.n" :label="item.label">
-          <el-input-number style="width: 100%" v-model="item.nums"></el-input-number>
+        <el-form-item style="width: 100%;" v-for="item in settingStore.setting.autoDay.b.n" :label="item.label">
+          <el-input style="width: 80px" v-model="item.nums">
+            <template #suffix>
+              <span>次</span>
+            </template>
+          </el-input>
+        </el-form-item>
+      </el-form-item>
+      <el-form-item label="活动">
+        <el-form-item style="width: 100%;" v-for="item in settingStore.setting.autoDay.h.n" :label="item.label">
+          <el-select multiple style="width: auto;" v-model="item.value">
+            <el-option label="简单" :value="0" :key="0"></el-option>
+            <el-option label="普通" :value="1" :key="1"></el-option>
+            <el-option label="困难" :value="2" :key="2"></el-option>
+          </el-select>
+          <el-input style="width: 80px" v-model="item.nums">
+            <template #suffix>
+              <span>次</span>
+            </template>
+          </el-input>
         </el-form-item>
       </el-form-item>
       <el-form-item label="操作">

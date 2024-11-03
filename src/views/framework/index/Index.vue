@@ -102,7 +102,7 @@
       </el-card>
     </div>
     <div class="framework-index-advert">
-      <el-text type="primary" size="large">你的心情有没有好一点</el-text>
+      <el-text type="primary" size="large">微信扫码吃顿饭支持我，谢谢你！</el-text>
       <el-collapse style="margin-top: 10px">
         <el-collapse-item title="(Ad)每天限领1000份，外卖免费吃！" name="1">
           <div>
