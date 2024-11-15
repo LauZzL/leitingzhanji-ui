@@ -17,7 +17,7 @@ nem.logger('info', userInfo);
 
 ```json
 {
-    "uid": "xxxxxx",
+    "uid": "xxxxxx",  // uid为唯一标识符，是程序自动生成的，而非小程序中的uid
     "sid": "xxxxxx",
     "avatar": "https:xxxxxxxxxxx", // 头像url
     "nickname": "昵称",
