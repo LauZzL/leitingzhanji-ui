@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: "/leitingzhanji-docs/",
+  base: "/ltzj-nem/",
   title: "LTZJ-NEM",
   description: "LTZJ-NEM Documentation",
   lastUpdated: true,
