@@ -1,0 +1,16 @@
+{
+  "name": "ltzj-nem",
+  "version": "3.1.4",
+  "description": "LTZJ-NEM Build 3",
+  "repository": "https://github.com/LauZzL/ltzj-nem",
+  "author": "LauZzL <lauzzl@163.com>",
+  "license": "MIT",
+  "scripts": {
+    "docs:dev": "cd docs && yarn docs:dev",
+    "docs:build": "cd docs && yarn docs:build",
+    "docs:preview": "cd docs && yarn docs:preview"
+  },
+  "dependencies": {
+    "vitepress": "^1.5.0"
+  }
+}
