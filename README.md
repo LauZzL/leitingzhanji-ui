@@ -22,6 +22,10 @@
 
 [Releases](https://github.com/LauZzL/ltzj-nem/releases)
 
+## 插件
+
+[Plugin](./plugin)
+
 ## 官方文档
 
 [https://lauzzl.github.io/leitingzhanji-docs/](https://lauzzl.github.io/leitingzhanji-docs/)
