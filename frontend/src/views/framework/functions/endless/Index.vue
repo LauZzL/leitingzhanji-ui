@@ -23,7 +23,7 @@
                         攻打BOSS宝箱
                     </el-button>
                     <el-button @click="attack(1)">
-                        攻打海盗宝箱(单次限1)
+                        攻打海盗宝箱
                     </el-button>
                 </el-space>
             </el-form-item>
