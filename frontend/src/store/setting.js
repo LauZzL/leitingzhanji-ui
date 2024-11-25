@@ -2,19 +2,22 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 export const useSettingStore = defineStore('setting', () => {
-    
+
     const setting = ref({
+        day: {
+            activeNames: ['1'],
+        },
         boss: {
             level: 'horse',
             sub: 2,
             nums: 1,
-            attack_timer: 35
+            attack_timer: 10
         },
         endless: {
             daoju: 0,
             buy_num: 1,
             nums: 1,
-            attack_timer: 60,
+            attack_timer: 10,
             boss_num: 1,
             zhufu: 0,
             enable_zhufu: false,
@@ -23,27 +26,27 @@ export const useSettingStore = defineStore('setting', () => {
             level: 'meteorite',
             sub: 2,
             nums: 1,
-            attack_timer: 35
+            attack_timer: 5
         },
         level: {
             level_payload: {
                 level: 1,
                 num: 1,
                 sleeps: 1000,
-                attack_timer: 5,
+                attack_timer: 10,
                 is_hero: false,
                 two_gain: 0,
             },
             cailiao_payload: {
                 cailiao: 0,
                 sleeps: 1000,
-                attack_timer: 5,
+                attack_timer: 10,
                 vip_level: 0,
             },
             rule_payload: {
                 attack_rule: '95,96',
                 sleeps: 1000,
-                attack_timer: 5,
+                attack_timer: 10,
                 is_hero: false,
             },
             gold_times: 100,
@@ -139,4 +142,4 @@ export const useSettingStore = defineStore('setting', () => {
     }
 
     return { setting, setSetting }
-  })
+})

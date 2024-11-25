@@ -55,7 +55,7 @@
           <div class="framework-index-user-left-info">
             <el-descriptions border>
               <el-descriptions-item label="昵称">{{ nickname() }}</el-descriptions-item>
-              <el-descriptions-item label="VIP">{{
+              <el-descriptions-item label="贵族">{{
                   userStore?.user?.vip ? userStore?.user?.vip : '未获取到'
                 }}
               </el-descriptions-item>
@@ -102,14 +102,6 @@
       </el-card>
     </div>
     <div class="framework-index-advert">
-      <el-text type="primary" size="large">微信扫码吃顿饭支持我，谢谢你！</el-text>
-      <el-collapse style="margin-top: 10px">
-        <el-collapse-item title="(Ad)每天限领1000份，外卖免费吃！" name="1">
-          <div>
-            <el-image :src="ad_url"></el-image>
-          </div>
-        </el-collapse-item>
-      </el-collapse>
     </div>
   </div>
 </template>
@@ -123,7 +115,6 @@ import {useDark, useToggle} from '@vueuse/core'
 import {Sunny, Moon} from '@element-plus/icons-vue';
 import {ElMessage} from 'element-plus';
 import {nextTick, ref} from 'vue'
-import ad_image from '@/assets/img/advert-00001.jpg'
 
 
 const isDark = useDark()
@@ -131,8 +122,6 @@ const isDark = useDark()
 
 const userStore = useUserStore();
 const settingStore = useSettingStore();
-
-const ad_url = ref(new URL(ad_image, import.meta.url))
 
 const nickname = () => {
   if (userStore?.user?.nickname?.length > 10) {

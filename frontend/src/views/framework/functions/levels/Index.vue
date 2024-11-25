@@ -23,6 +23,10 @@
                                v-model="settingStore.setting.level.level_payload.sleeps"
                                size="small" placeholder="请输入攻打间隔" clearable/>
             </el-form-item>
+            <el-form-item label="Timer">
+              <el-input-number style="width: 180px;" :step="1" :min="1" v-model="settingStore.setting.level.level_payload.attack_timer" size="small"
+                               placeholder="请输入整数" clearable />
+            </el-form-item>
             <br>
             <el-form-item label="操作">
               <el-space>
@@ -50,6 +54,11 @@
                                v-model="settingStore.setting.level.cailiao_payload.sleeps" size="small"
                                placeholder="请输入攻打间隔" clearable/>
             </el-form-item>
+            <el-form-item label="Timer">
+              <el-input-number style="width: 180px;" :step="1" :min="1" v-model="settingStore.setting.level.cailiao_payload.attack_timer" size="small"
+                               placeholder="请输入整数" clearable />
+            </el-form-item>
+            <br>
             <el-form-item label="贵族">
               <el-radio-group v-model="settingStore.setting.level.cailiao_payload.vip_level">
                 <el-radio :value="0">默认</el-radio>
@@ -84,6 +93,10 @@
                                v-model="settingStore.setting.level.rule_payload.sleeps" size="small"
                                placeholder="请输入攻打间隔" clearable/>
             </el-form-item>
+            <el-form-item label="Timer">
+              <el-input-number style="width: 180px;" :step="1" :min="1" v-model="settingStore.setting.level.rule_payload.attack_timer" size="small"
+                               placeholder="请输入整数" clearable />
+            </el-form-item>
             <br>
             <el-form-item label="操作">
               <el-space>
@@ -114,6 +127,7 @@
 <script setup>
 import Webview from '@/utils/webview'
 import {useSettingStore} from "@/store/setting.js";
+import {onMounted, onUnmounted, ref} from "vue";
 
 const settingStore = useSettingStore()
 

@@ -24,7 +24,9 @@
     <el-divider/>
     <div class="functions-content">
       <div class="functions-content-main">
-        <router-view/>
+        <el-scrollbar :height="`${height}px`">
+          <router-view/>
+        </el-scrollbar>
       </div>
       <div class="functions-content-log">
         <logger-component :logger="loggerStore.logger" ref="logger"/>
@@ -37,7 +39,7 @@
 import LoggerComponent from "@/components/logger/LoggerComponent.vue";
 import {useLoggerStore} from '@/store/logger';
 import Router from "@/router";
-import {ref} from "vue";
+import {ref,onMounted,onUnmounted} from "vue";
 
 const loggerStore = useLoggerStore();
 
@@ -46,6 +48,28 @@ const changePage = (name) => {
 }
 
 const logger = ref(null);
+
+
+const height = ref(window.innerHeight - 360)
+
+// 监听窗口大小变化
+window.onresize = () => {
+  height.value = window.innerHeight - 360;
+}
+
+const handleResize = () => {
+  height.value = window.innerHeight - 360;
+};
+
+onMounted(() => {
+  window.addEventListener('resize', handleResize);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize);
+});
+
+
 </script>
 
 <style scoped>
