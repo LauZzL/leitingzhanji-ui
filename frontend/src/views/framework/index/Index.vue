@@ -8,13 +8,17 @@
         <el-link type="primary" target="_blank"
                  href="https://kook.top/iTY8us">KOOK
         </el-link> 频道在线交流
-        ，Star 该项目
+        <br>Star 该项目
         <el-link type="primary" target="_blank"
-                 href="https://github.com/LauZzL/leitingzhanji-ui">Github
+                 href="https://github.com/LauZzL/ltzj-nem">Github
         </el-link>
-        ，如有任何问题请访问
+        <br>如有任何问题请访问
         <el-link type="primary" target="_blank"
-                 href="https://github.com/LauZzL/leitingzhanji-ui/issues">Github Issues
+                 href="https://github.com/LauZzL/ltzj-nem/issues">Github Issues
+        </el-link>
+        <br>分享或下载脚本扩展
+        <el-link type="primary" target="_blank"
+                 href="https://github.com/LauZzL/ltzj-nem/tree/master/plugin">Plugin
         </el-link>
         <br>
         <el-alert style="margin-top: 5px;" type="warning" show-icon :closable="true">
