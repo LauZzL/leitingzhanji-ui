@@ -61,6 +61,7 @@ const editAuto = (e) => {
             <el-option label="简单" :value="0" :key="0"></el-option>
             <el-option label="普通" :value="1" :key="1"></el-option>
             <el-option label="困难" :value="2" :key="2"></el-option>
+            <el-option label="极难" :value="3" :key="3"></el-option>
           </el-select>
           <el-input style="width: 80px" v-model="item.nums">
             <template #suffix>

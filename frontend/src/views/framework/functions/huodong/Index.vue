@@ -14,6 +14,7 @@
                     <el-radio :value="0">简单</el-radio>
                     <el-radio :value="1">普通</el-radio>
                     <el-radio :value="2">困难</el-radio>
+                    <el-radio :value="3">极难</el-radio>
                 </el-radio-group>
             </el-form-item>
             <br>

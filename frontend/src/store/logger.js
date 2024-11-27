@@ -8,21 +8,21 @@ export const useLoggerStore = defineStore('logger', () => {
     ])
     const add = (log) => {
         // 避免日志过多
-        if (log.length > 300) { logger.value = [] }
+        if (logger.value.length > 300) { logger.value = [] }
         logger.value.unshift(`<span class="el-tag el-tag--info el-tag--light"><span class="el-tag__content">${commonUtils.getLocalDateTime()}</span><!--v-if--></span> ${log}`)
     }
 
     const packet_logger = ref([])
 
     const add_packet = (log) => {
-        if (log.length > 300) { packet_logger.value = [] }
+        if (packet_logger.value.length > 300) { packet_logger.value = [] }
         packet_logger.value.unshift(`<span class="el-tag el-tag--info el-tag--light"><span class="el-tag__content">${commonUtils.getLocalDateTime()}</span><!--v-if--></span> ${log}`)
     }
 
     const script_logger = ref([])
 
     const add_script = (log) => {
-        if (log.length > 300) { script_logger.value = [] }
+        if (script_logger.value.length > 300) { script_logger.value = [] }
         script_logger.value.unshift(`<span class="el-tag el-tag--info el-tag--light"><span class="el-tag__content">${commonUtils.getLocalDateTime()}</span><!--v-if--></span> ${log}`)
     }
 
