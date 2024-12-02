@@ -80,27 +80,17 @@
         <div>
           <el-form :model="settingStore.setting.level.rule_payload" class="demo-form-inline" :inline="true">
             <el-form-item label="规则" style="width: 100%">
-              <el-input v-model="settingStore.setting.level.rule_payload.attack_rule" style="width: 100%" resize="none"
+              <el-input v-model="rules" style="width: 100%" resize="none"
                         :rows="2" type="textarea"
                         placeholder="请输入规则"/>
             </el-form-item>
             <br>
-            <el-form-item label="难度">
-              <el-checkbox v-model="settingStore.setting.level.rule_payload.is_hero">英雄</el-checkbox>
-            </el-form-item>
-            <el-form-item label="间隔">
-              <el-input-number style="width: 180px;" :step="100" :min="500"
-                               v-model="settingStore.setting.level.rule_payload.sleeps" size="small"
-                               placeholder="请输入攻打间隔" clearable/>
-            </el-form-item>
-            <el-form-item label="Timer">
-              <el-input-number style="width: 180px;" :step="1" :min="1" v-model="settingStore.setting.level.rule_payload.attack_timer" size="small"
-                               placeholder="请输入整数" clearable />
-            </el-form-item>
-            <br>
             <el-form-item label="操作">
               <el-space>
-                <el-button type="primary" @click="attack(51, settingStore.setting.level.rule_payload)">攻打</el-button>
+                <el-button type="info" @click="editor_visible = true">规则编辑器</el-button>
+                <el-button type="primary" @click="attack(51, {
+                  attack_rule: JSON.parse(rules)
+                })">攻打</el-button>
                 <el-button type="warning" @click="stop(52)">停止</el-button>
               </el-space>
             </el-form-item>
@@ -121,15 +111,90 @@
         </div>
       </el-tab-pane>
     </el-tabs>
+    <el-dialog v-model="editor_visible" :show-close="false" width="450">
+      <template #header="{ close, titleId, titleClass }">
+        <div class="edit_header">
+          <h4 :id="titleId" :class="titleClass">规则编辑器</h4>
+          <el-button type="danger" @click="close">
+            <el-icon class="el-icon--left"><CircleCloseFilled /></el-icon>
+            关闭
+          </el-button>
+        </div>
+      </template>
+      <div>
+        <el-form>
+          <el-form-item label="关卡">
+            <el-input type="number" v-model="edit_form.level"></el-input>
+          </el-form-item>
+          <el-form-item label="难度">
+            <el-checkbox v-model="edit_form.is_hero">英雄</el-checkbox>
+          </el-form-item>
+          <el-form-item label="双倍">
+            <el-radio-group v-model="edit_form.two_gain">
+              <el-radio :value="0">关闭</el-radio>
+              <el-radio :value="1">任何情况</el-radio>
+              <el-radio :value="2">3经验双倍</el-radio>
+            </el-radio-group>
+          </el-form-item>
+          <el-form-item label="Timer">
+            <el-input-number style="width: 180px;" :step="1" :min="1" v-model="edit_form.attack_timer" size="small"
+                             placeholder="请输入整数" clearable />
+          </el-form-item>
+          <el-form-item label="操作">
+            <el-button type="primary" @click="add_rule" plain>添加</el-button>
+            <el-button type="success" @click="editor_visible = false" plain>完成</el-button>
+          </el-form-item>
+        </el-form>
+        <el-table :data="settingStore.setting.level.rule_payload.attack_rule" style="width: 100%">
+          <el-table-column type="index" width="50"></el-table-column>
+          <el-table-column prop="level" label="关卡"></el-table-column>
+          <el-table-column prop="is_hero" label="难度">
+            <template #default="scope">
+              {{ scope.row.is_hero ? '英雄' : '普通' }}
+            </template>
+          </el-table-column>
+          <el-table-column prop="two_gain" label="双倍领取">
+            <template #default="scope">
+              {{ scope.row.two_gain === 0 ? '关闭' : scope.row.two_gain === 1 ? '任何情况' : '3经验双倍' }}
+            </template>
+          </el-table-column>
+          <el-table-column prop="attack_timer" label="Timer"></el-table-column>
+          <el-table-column fixed="right" label="操作">
+            <template #default="scope">
+              <el-button type="danger" size="small" @click="settingStore.setting.level.rule_payload.attack_rule.splice(scope.$index, 1)">删除</el-button>
+            </template>
+          </el-table-column>
+        </el-table>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
 <script setup>
 import Webview from '@/utils/webview'
 import {useSettingStore} from "@/store/setting.js";
-import {onMounted, onUnmounted, ref} from "vue";
+import {CircleCloseFilled} from "@element-plus/icons-vue";
+import {ref, computed} from "vue";
 
 const settingStore = useSettingStore()
+const editor_visible = ref(false)
+const edit_form = ref({
+  level: 1,
+  is_hero: false,
+  two_gain: 0,
+  attack_timer: 10
+})
+const rules = computed(() => JSON.stringify(settingStore.setting.level.rule_payload.attack_rule))
+
+const add_rule = () => {
+  const rules = settingStore.setting.level.rule_payload.attack_rule;
+  if (Array.isArray(rules)) {
+    settingStore.setting.level.rule_payload.attack_rule.push(JSON.parse(JSON.stringify(edit_form.value)));
+  } else {
+    settingStore.setting.level.rule_payload.attack_rule = [JSON.parse(JSON.stringify(edit_form.value))];
+  }
+}
+
 
 const attack = (cmd, e) => {
   e.cmd = cmd
@@ -151,4 +216,12 @@ const toggleTwoGain = (e) => {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.edit_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+}
+</style>

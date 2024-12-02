@@ -43,7 +43,6 @@ const editAuto = (e) => {
       </el-form-item>
       <el-form-item label="闯关">
         <el-checkbox label="攻打" v-model="settingStore.setting.autoDay.a.enable"></el-checkbox>
-        <el-checkbox label="英雄" v-model="settingStore.setting.autoDay.a.is_hero"></el-checkbox>
         <el-input style="margin-left: 10px" placeholder="请输入规则" v-model="settingStore.setting.autoDay.a.attack_rule"></el-input>
       </el-form-item>
       <el-form-item label="BOSS">
