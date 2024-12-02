@@ -44,7 +44,7 @@ export const useSettingStore = defineStore('setting', () => {
                 vip_level: 0,
             },
             rule_payload: {
-                attack_rule: [{"level":1,"is_hero":false,"two_gain":0,"attack_timer":10}],
+                attack_rule: '[{"level":1,"is_hero":false,"two_gain":0,"attack_timer":10}]',
                 sleeps: 1000,
                 attack_timer: 10,
                 is_hero: false,

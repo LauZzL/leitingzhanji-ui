@@ -80,7 +80,7 @@
         <div>
           <el-form :model="settingStore.setting.level.rule_payload" class="demo-form-inline" :inline="true">
             <el-form-item label="规则" style="width: 100%">
-              <el-input v-model="rules" style="width: 100%" resize="none"
+              <el-input v-model="settingStore.setting.level.rule_payload.attack_rule" style="width: 100%" resize="none"
                         :rows="2" type="textarea"
                         placeholder="请输入规则"/>
             </el-form-item>
@@ -89,7 +89,7 @@
               <el-space>
                 <el-button type="info" @click="editor_visible = true">规则编辑器</el-button>
                 <el-button type="primary" @click="attack(51, {
-                  attack_rule: JSON.parse(rules)
+                  attack_rule: JSON.parse(settingStore.setting.level.rule_payload.attack_rule)
                 })">攻打</el-button>
                 <el-button type="warning" @click="stop(52)">停止</el-button>
               </el-space>
@@ -145,7 +145,7 @@
             <el-button type="success" @click="editor_visible = false" plain>完成</el-button>
           </el-form-item>
         </el-form>
-        <el-table :data="settingStore.setting.level.rule_payload.attack_rule" style="width: 100%">
+        <el-table :data="rules" style="width: 100%">
           <el-table-column type="index" width="50"></el-table-column>
           <el-table-column prop="level" label="关卡"></el-table-column>
           <el-table-column prop="is_hero" label="难度">
@@ -161,7 +161,7 @@
           <el-table-column prop="attack_timer" label="Timer"></el-table-column>
           <el-table-column fixed="right" label="操作">
             <template #default="scope">
-              <el-button type="danger" size="small" @click="settingStore.setting.level.rule_payload.attack_rule.splice(scope.$index, 1)">删除</el-button>
+              <el-button type="danger" size="small" @click="delete_rule(scope.$index)">删除</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -184,15 +184,29 @@ const edit_form = ref({
   two_gain: 0,
   attack_timer: 10
 })
-const rules = computed(() => JSON.stringify(settingStore.setting.level.rule_payload.attack_rule))
+const rules = computed(() => {
+  try {
+    return JSON.parse(settingStore.setting.level.rule_payload.attack_rule)
+  } catch (e) {
+    return []
+  }
+})
+
 
 const add_rule = () => {
-  const rules = settingStore.setting.level.rule_payload.attack_rule;
+  const rules = JSON.parse(settingStore.setting.level.rule_payload.attack_rule);
   if (Array.isArray(rules)) {
-    settingStore.setting.level.rule_payload.attack_rule.push(JSON.parse(JSON.stringify(edit_form.value)));
+    rules.push(JSON.parse(JSON.stringify(edit_form.value)));
+    settingStore.setting.level.rule_payload.attack_rule = JSON.stringify(rules);
   } else {
-    settingStore.setting.level.rule_payload.attack_rule = [JSON.parse(JSON.stringify(edit_form.value))];
+    settingStore.setting.level.rule_payload.attack_rule = JSON.stringify(edit_form.value);
   }
+}
+
+const delete_rule = (e) => {
+  const rules = JSON.parse(settingStore.setting.level.rule_payload.attack_rule);
+  rules.splice(e, 1);
+  settingStore.setting.level.rule_payload.attack_rule = JSON.stringify(rules);
 }
 
 
