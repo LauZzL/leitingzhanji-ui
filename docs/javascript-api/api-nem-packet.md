@@ -59,7 +59,7 @@ nem.logger('info', result)
 - start <Badge type="info" text="Integer" /> 起始位置，部分模式需要计算多次actions(例如攻打无尽需要重复计算，第二次计算的start就是上一次计算的actionInfos长度)。
 - actionInfos <Badge type="info" text="String" /> 进入对局返回的actionInfos数组(需要JSON.stringify)。
 - level <Badge type="info" text="Integer" /> 闯关填写关卡，无尽、PVP固定为1，BOSS关卡为难度+1。
-- type <Badge type="info" text="String" /> 普通关卡(normal) | 英雄关卡(hero) | 白鸟座(bird) | 天龙座(loong) | 仙女座(female) | 天马座(horse) | 无尽(endless) | PVP金币场(pvp_gold) | 超限BOSS(hyper_${boos_type}[hyper_loong]) 。
+- type <Badge type="info" text="String" /> 普通关卡(normal) | 英雄关卡(hero) | 陨石陷阱(meteorite) | 激光迷宫(laser) | 导弹猎场(missile) | 白鸟座(bird) | 天龙座(loong) | 仙女座(female) | 天马座(horse) | 无尽(endless) | PVP金币场(pvp_gold) | 超限BOSS(hyper_${boos_type}[hyper_loong]) 。
 
 
 ```javascript
