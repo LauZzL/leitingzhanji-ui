@@ -24,8 +24,9 @@
                                size="small" placeholder="请输入攻打间隔" clearable/>
             </el-form-item>
             <el-form-item label="Timer">
-              <el-input-number style="width: 180px;" :step="1" :min="1" v-model="settingStore.setting.level.level_payload.attack_timer" size="small"
-                               placeholder="请输入整数" clearable />
+              <el-input-number style="width: 180px;" :step="1" :min="1"
+                               v-model="settingStore.setting.level.level_payload.attack_timer" size="small"
+                               placeholder="请输入整数" clearable/>
             </el-form-item>
             <br>
             <el-form-item label="操作">
@@ -55,8 +56,9 @@
                                placeholder="请输入攻打间隔" clearable/>
             </el-form-item>
             <el-form-item label="Timer">
-              <el-input-number style="width: 180px;" :step="1" :min="1" v-model="settingStore.setting.level.cailiao_payload.attack_timer" size="small"
-                               placeholder="请输入整数" clearable />
+              <el-input-number style="width: 180px;" :step="1" :min="1"
+                               v-model="settingStore.setting.level.cailiao_payload.attack_timer" size="small"
+                               placeholder="请输入整数" clearable/>
             </el-form-item>
             <br>
             <el-form-item label="贵族">
@@ -69,7 +71,8 @@
             <br>
             <el-form-item label="操作">
               <el-space>
-                <el-button type="primary" @click="attack(50, settingStore.setting.level.cailiao_payload)">攻打</el-button>
+                <el-button type="primary" @click="attack(50, settingStore.setting.level.cailiao_payload)">攻打
+                </el-button>
                 <el-button type="warning" @click="stop(53)">停止</el-button>
               </el-space>
             </el-form-item>
@@ -90,7 +93,8 @@
                 <el-button type="info" @click="editor_visible = true">规则编辑器</el-button>
                 <el-button type="primary" @click="attack(51, {
                   attack_rule: JSON.parse(settingStore.setting.level.rule_payload.attack_rule)
-                })">攻打</el-button>
+                })">攻打
+                </el-button>
                 <el-button type="warning" @click="stop(52)">停止</el-button>
               </el-space>
             </el-form-item>
@@ -116,7 +120,9 @@
         <div class="edit_header">
           <h4 :id="titleId" :class="titleClass">规则编辑器</h4>
           <el-button type="danger" @click="close">
-            <el-icon class="el-icon--left"><CircleCloseFilled /></el-icon>
+            <el-icon class="el-icon--left">
+              <CircleCloseFilled/>
+            </el-icon>
             关闭
           </el-button>
         </div>
@@ -138,7 +144,7 @@
           </el-form-item>
           <el-form-item label="Timer">
             <el-input-number style="width: 180px;" :step="1" :min="1" v-model="edit_form.attack_timer" size="small"
-                             placeholder="请输入整数" clearable />
+                             placeholder="请输入整数" clearable/>
           </el-form-item>
           <el-form-item label="操作">
             <el-button type="primary" @click="add_rule" plain>添加</el-button>

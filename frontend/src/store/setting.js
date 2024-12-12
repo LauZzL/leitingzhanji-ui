@@ -1,5 +1,5 @@
-import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import {defineStore} from 'pinia'
+import {ref} from 'vue'
 
 export const useSettingStore = defineStore('setting', () => {
 
@@ -26,7 +26,7 @@ export const useSettingStore = defineStore('setting', () => {
             level: 'meteorite',
             sub: 2,
             nums: 1,
-            attack_timer: 5
+            attack_timer: 60
         },
         level: {
             level_payload: {
@@ -91,17 +91,17 @@ export const useSettingStore = defineStore('setting', () => {
                         type: 'loong',
                         value: 1,
                         nums: 0,
-                    },{
+                    }, {
                         label: "白鸟座(副武器)",
                         type: 'bird',
                         value: 2,
                         nums: 0,
-                    },{
+                    }, {
                         label: "天马座(战机)",
                         type: 'horse',
                         value: 0,
                         nums: 0,
-                    },{
+                    }, {
                         label: "仙女座(僚机)",
                         type: 'female',
                         value: 3,
@@ -117,17 +117,17 @@ export const useSettingStore = defineStore('setting', () => {
                         id: 0,
                         value: [],
                         nums: 0,
-                    },{
+                    }, {
                         label: "激光迷宫(经验)",
                         type: 'laser',
                         id: 1,
-                        value: [1,2],
+                        value: [1, 2],
                         nums: 0,
-                    },{
+                    }, {
                         label: "导弹猎场(材料)",
                         type: 'missile',
                         id: 2,
-                        value: [0,1,2],
+                        value: [0, 1, 2],
                         nums: 0,
                     }
                 ]
@@ -140,5 +140,5 @@ export const useSettingStore = defineStore('setting', () => {
         setting.value = e
     }
 
-    return { setting, setSetting }
+    return {setting, setSetting}
 })

@@ -30,20 +30,21 @@ const editAuto = (e) => {
       <el-form-item label="领取">
         <el-space wrap>
           <el-checkbox-group v-model="settingStore.setting.autoDay.c" @change="editAuto">
-            <el-checkbox label="商城奖励" value="202" />
-            <el-checkbox label="体力x4次"  value="201"/>
-            <el-checkbox label="装备宝箱"  value="203"/>
-            <el-checkbox label="星际探索"  value="204"/>
-            <el-checkbox label="幸运转盘"  value="205"/>
-            <el-checkbox label="弹幕钻石"  value="207"/>
-            <el-checkbox label="桌面启动钻石"  value="208"/>
-            <el-checkbox label="助战金币"  value="214"/>
+            <el-checkbox label="商城奖励" value="202"/>
+            <el-checkbox label="体力x4次" value="201"/>
+            <el-checkbox label="装备宝箱" value="203"/>
+            <el-checkbox label="星际探索" value="204"/>
+            <el-checkbox label="幸运转盘" value="205"/>
+            <el-checkbox label="弹幕钻石" value="207"/>
+            <el-checkbox label="桌面启动钻石" value="208"/>
+            <el-checkbox label="助战金币" value="214"/>
           </el-checkbox-group>
         </el-space>
       </el-form-item>
       <el-form-item label="闯关">
         <el-checkbox label="攻打" v-model="settingStore.setting.autoDay.a.enable"></el-checkbox>
-        <el-input style="margin-left: 10px" placeholder="请输入规则" v-model="settingStore.setting.autoDay.a.attack_rule"></el-input>
+        <el-input style="margin-left: 10px" placeholder="请输入规则"
+                  v-model="settingStore.setting.autoDay.a.attack_rule"></el-input>
       </el-form-item>
       <el-form-item label="BOSS">
         <el-form-item style="width: 100%;" v-for="item in settingStore.setting.autoDay.b.n" :label="item.label">
