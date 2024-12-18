@@ -6,6 +6,8 @@
   "author": "LauZzL <lauzzl@163.com>",
   "license": "MIT",
   "scripts": {
+    "frontend:dev": "cd frontend && yarn dev",
+    "frontend:build": "cd frontend && yarn build",
     "docs:dev": "cd docs && yarn docs:dev",
     "docs:build": "cd docs && yarn docs:build",
     "docs:preview": "cd docs && yarn docs:preview"

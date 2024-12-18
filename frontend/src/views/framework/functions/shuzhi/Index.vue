@@ -5,7 +5,7 @@
                 <el-input type="number" :step="100000" v-model="settingStore.setting.shuzhi.engineDamage" placeholder="请输入战机伤害"
                     class="input-with-btn">
                     <template #append>
-                        <el-button @click="modify('engineDamage', settingStore.setting.shuzhi.engineDamage)">修改</el-button>
+                        <el-button @click="modify('engineDamage', settingStore.setting.shuzhi.engineDamage)" disabled>修改</el-button>
                     </template>
                 </el-input>
             </el-form-item>
@@ -13,7 +13,7 @@
                 <el-input type="number" :step="100000" v-model="settingStore.setting.shuzhi.weaponDamage" placeholder="请输入副武器伤害"
                     class="input-with-btn">
                     <template #append>
-                        <el-button @click="modify('weaponDamage', settingStore.setting.shuzhi.weaponDamage)">修改</el-button>
+                        <el-button @click="modify('weaponDamage', settingStore.setting.shuzhi.weaponDamage)" disabled>修改</el-button>
                     </template>
                 </el-input>
             </el-form-item>
@@ -21,7 +21,7 @@
                 <el-input type="number" :step="100000" v-model="settingStore.setting.shuzhi.wingmanDamage" placeholder="请输入僚机伤害"
                     class="input-with-btn">
                     <template #append>
-                        <el-button @click="modify('wingmanDamage', settingStore.setting.shuzhi.wingmanDamage)">修改</el-button>
+                        <el-button @click="modify('wingmanDamage', settingStore.setting.shuzhi.wingmanDamage)" disabled>修改</el-button>
                     </template>
                 </el-input>
             </el-form-item>
@@ -29,7 +29,7 @@
                 <el-input type="number" :step="100000" v-model="settingStore.setting.shuzhi.engineHp" placeholder="请输入战机血量"
                     class="input-with-btn">
                     <template #append>
-                        <el-button @click="modify('engineHp', settingStore.setting.shuzhi.engineHp)">修改</el-button>
+                        <el-button @click="modify('engineHp', settingStore.setting.shuzhi.engineHp)" disabled>修改</el-button>
                     </template>
                 </el-input>
             </el-form-item>
@@ -37,7 +37,7 @@
                 <el-input type="number" :step="100" v-model="settingStore.setting.shuzhi.score" placeholder="请输入对局分数"
                     class="input-with-btn">
                     <template #append>
-                        <el-button @click="modify('score', settingStore.setting.shuzhi.score)">修改</el-button>
+                        <el-button @click="modify('score', settingStore.setting.shuzhi.score)" disabled>修改</el-button>
                     </template>
                 </el-input>
             </el-form-item>

@@ -37,6 +37,8 @@ import { useDark } from '@vueuse/core'
 import gain from "@/utils/gain";
 import MusicPlayer from "@/components/common/MusicPlayer.vue";
 
+console.log("\n %c LTZJ-NEM.build %c www.github.com/LauZzL/ltzj-nem", "color:#fff;background:linear-gradient(90deg,#448bff,#44e9ff);padding:5px 0;", "color:#000;background:linear-gradient(90deg,#44e9ff,#ffffff);padding:5px 10px 5px 0px;");
+
 const isDark = useDark()
 
 const font = reactive({
@@ -66,81 +68,114 @@ const settingStore = useSettingStore();
 const backpackStore = useBackPackStore();
 
 chrome.webview.addEventListener("message", function messageEvent(evt) {
-  let data = evt.data
-  data = JSON.parse(decodeURIComponent(data))
-  if (data.cmd == -1) {
-    ElMessage({
-      showClose: true,
-      message: data.message,
-      type: data.type
-    })
-  }else if (data.cmd == -2) {
-    ElNotification({
-      title: '一言',
-      message: data.message,
-      type: 'success',
-    })
-  }else if (data.cmd == -3) {
-    settingStore.setting.player_id = data.message
-  }else if (data.cmd == 10216) {
-    settingStore.setting.cdk_str = data.data.join('\n')
-  }else if(data.cmd == 77){
-    userStore.setUser(data.data)
-    backpackStore.backpack.equips = [];
-    backpackStore.backpack.items = [];
-    backpackStore.backpack.items = gain.json_parse4equips(data.data.items)
-    backpackStore.backpack.equips = gain.json_parse4equips(data.data.equips)
-  }else if(data.cmd == 999){
-    hasUpdate(data.message)
-  }else if(data.cmd == 233){
-    settingStore.setting.autoDay = data.data
-  }else if(data.cmd == 153826){
-    const lucky_gain = gain.gain_raw2json(data.data.gain_raw, true)
-    const used_items = data.data.used_items
-    const luckyValue = data.data.luckyValue
-    const luckyType = data.data.luckyType
-    // 将最新的幸运值更新到本地
-    userStore?.user?.allLuckys.forEach(lucky => {
-      if (lucky.type === Number(luckyType)) {
-        lucky.luckyValue = Number(luckyValue)
-      }
-    })
-    // 获取使用的物品的id集合
-    let usedItemIds = new Set(used_items.map(item => item.id));
-    // 过滤掉所有物品中使用的物品
-    backpackStore.backpack.equips = backpackStore.backpack.equips.filter(item => !usedItemIds.has(item.data.id));
-    backpackStore.backpack.lucky = lucky_gain
-  }else if(data.cmd == 153827){
-    const used_items = data.data.used_items
-    let usedItemIds = new Set(used_items.map(item => item.id));
-    backpackStore.backpack.equips = backpackStore.backpack.equips.filter(item => !usedItemIds.has(item.data.id))
-    backpackStore.backpack.items = backpackStore.backpack.items.filter(item => !usedItemIds.has(item.data.id))
-  }else if (data.cmd == 301 && messageStore.capture) {
-    data.index = messageStore.network.length + 1
-    messageStore.addNetwork(data)
-  }else if (200 < data.cmd && data.cmd < 300) {
-    loggerStore.add(decodeURI(data.message))
-  }else if (data.cmd == 48 || data.cmd == 49) {
-    loggerStore.add(decodeURI(data.message))
-  }else if (data.cmd == 793) {
-    shopStore.setShop(data.data)
-  }else if (data.cmd == 1002) {
-    executorStore.setExecutor(data.data)
-  }else if (data.cmd == 1003) {
-    loggerStore.add_packet(data.message)
-  }else if (data.cmd == 1007) {
-    nemStore.setNem(data.data)
-  }else if (data.cmd == 3002) {
-    scriptStore.setScript(decodeURIComponent(atob(data.data.code)))
-    return
-  }else if (data.cmd == 3007) {
-    scriptStore.setScripts(data.data)
-    return
-  }else if (data.cmd >= 3000 && data.cmd <= 3100) {
-    loggerStore.add_script(data.message)
+  try {
+    let data = evt.data;
+    data = JSON.parse(decodeURIComponent(data));
+
+    function filterEquips(usedItemIds) {
+      return backpackStore.backpack.equips.filter(item => !usedItemIds.has(item.data.id));
+    }
+
+    function filterItems(usedItemIds) {
+      return backpackStore.backpack.items.filter(item => !usedItemIds.has(item.data.id));
+    }
+
+    switch (data.cmd) {
+      case -1:
+        ElMessage({
+          showClose: true,
+          message: data.message,
+          type: data.type
+        });
+        break;
+      case -2:
+        ElNotification({
+          title: '一言',
+          message: data.message,
+          type: 'success',
+        });
+        break;
+      case -3:
+        settingStore.setting.player_id = data.message;
+        break;
+      case 10216:
+        settingStore.setting.cdk_str = data.data.join('\n');
+        break;
+      case 77:
+        userStore.setUser(data.data);
+        backpackStore.backpack.equips = [];
+        backpackStore.backpack.items = [];
+        backpackStore.backpack.items = gain.json_parse4equips(data.data.items);
+        backpackStore.backpack.equips = gain.json_parse4equips(data.data.equips);
+        break;
+      case 999:
+        hasUpdate(data.message);
+        break;
+      case 233:
+        settingStore.setting.autoDay = data.data;
+        break;
+      case 153826:
+        const lucky_gain = gain.gain_raw2json(data.data.gain_raw, true);
+        const used_items = data.data.used_items;
+        const luckyValue = data.data.luckyValue;
+        const luckyType = data.data.luckyType;
+
+        userStore?.user?.allLuckys.forEach(lucky => {
+          if (lucky.type === Number(luckyType)) {
+            lucky.luckyValue = Number(luckyValue);
+          }
+        });
+
+        const usedItemIds = new Set(used_items.map(item => item.id));
+        backpackStore.backpack.equips = filterEquips(usedItemIds);
+        backpackStore.backpack.lucky = lucky_gain;
+        break;
+      case 153827:
+        const usedItemIds2 = new Set(data.data.used_items.map(item => item.id));
+        backpackStore.backpack.equips = filterEquips(usedItemIds2);
+        backpackStore.backpack.items = filterItems(usedItemIds2);
+        break;
+      case 301:
+        if (messageStore.capture) {
+          data.index = messageStore.network.length + 1;
+          messageStore.addNetwork(data);
+        }
+        break;
+      case 48:
+      case 49:
+        loggerStore.add(decodeURIComponent(data.message));
+        break;
+      case 793:
+        shopStore.setShop(data.data);
+        break;
+      case 1002:
+        executorStore.setExecutor(data.data);
+        break;
+      case 1003:
+        loggerStore.add_packet(data.message);
+        break;
+      case 1007:
+        nemStore.setNem(data.data);
+        break;
+      case 3002:
+        scriptStore.setScript(decodeURIComponent(atob(data.data.code)));
+        return;
+      case 3007:
+        scriptStore.setScripts(data.data);
+        return;
+      default:
+        if (data.cmd >= 3000 && data.cmd <= 3100) {
+          loggerStore.add_script(data.message);
+        } else if (200 < data.cmd && data.cmd < 300) {
+          loggerStore.add(decodeURIComponent(data.message));
+        }
+        break;
+    }
+  } catch (error) {
+    console.error('Error processing message:', error);
   }
-  return 
-})
+});
+
 
 const hasUpdate = (msg) => {
   ElMessageBox.confirm(
@@ -153,7 +188,7 @@ const hasUpdate = (msg) => {
     }
   )
     .then(() => {
-      window.open('https://github.com/LauZzL/leitingzhanji-ui/releases')
+      window.open('https://github.com/LauZzL/ltzj-nem/releases')
     })
     .catch(() => {
       // on cancel

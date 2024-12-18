@@ -36,15 +36,17 @@ export const useSettingStore = defineStore('setting', () => {
                 attack_timer: 10,
                 is_hero: false,
                 two_gain: 0,
+                score: 10000
             },
             cailiao_payload: {
                 cailiao: 0,
                 sleeps: 1000,
                 attack_timer: 10,
                 vip_level: 0,
+                score: 10000
             },
             rule_payload: {
-                attack_rule: '[{"level":1,"is_hero":false,"two_gain":0,"attack_timer":10}]',
+                attack_rule: '[{"level":1,"is_hero":false,"score":10000,"two_gain":0,"attack_timer":10}]',
                 sleeps: 1000,
                 attack_timer: 10,
                 is_hero: false,
@@ -82,7 +84,7 @@ export const useSettingStore = defineStore('setting', () => {
             c: [],
             a: {
                 enable: false,
-                attack_rule: '[{"level":1,"is_hero":false,"two_gain":0,"attack_timer":10}]'
+                attack_rule: '[{"level":1,"is_hero":false,"score":10000,"two_gain":0,"attack_timer":10}]'
             },
             b: {
                 n: [

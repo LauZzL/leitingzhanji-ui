@@ -5,28 +5,33 @@
         <div>
           <el-form :inline="true" :model="settingStore.setting.level.level_payload" class="demo-form-inline">
             <el-form-item label="关卡">
-              <el-input-number style="width: 180px;" :min="1" v-model="settingStore.setting.level.level_payload.level"
+              <el-input-number :min="1" v-model="settingStore.setting.level.level_payload.level"
                                size="small"
-                               placeholder="请输入攻打的关卡" clearable/>
+                               clearable/>
             </el-form-item>
             <el-form-item label="次数">
-              <el-input-number style="width: 180px;" :min="1" v-model="settingStore.setting.level.level_payload.num"
+              <el-input-number :min="1" v-model="settingStore.setting.level.level_payload.num"
                                size="small"
-                               placeholder="请输入攻打次数" clearable/>
+                               clearable/>
             </el-form-item>
             <br>
             <el-form-item label="难度">
               <el-checkbox v-model="settingStore.setting.level.level_payload.is_hero">英雄</el-checkbox>
             </el-form-item>
+            <br>
+            <el-form-item label="分数(过大无法结算)">
+              <el-input-number :step="1000" size="small" v-model="settingStore.setting.level.level_payload.score" clearable/>
+            </el-form-item>
+            <br>
             <el-form-item label="间隔">
-              <el-input-number style="width: 180px;" :step="100" :min="500"
+              <el-input-number :step="100" :min="500"
                                v-model="settingStore.setting.level.level_payload.sleeps"
-                               size="small" placeholder="请输入攻打间隔" clearable/>
+                               size="small" clearable/>
             </el-form-item>
             <el-form-item label="Timer">
-              <el-input-number style="width: 180px;" :step="1" :min="1"
+              <el-input-number :step="1" :min="1"
                                v-model="settingStore.setting.level.level_payload.attack_timer" size="small"
-                               placeholder="请输入整数" clearable/>
+                               clearable/>
             </el-form-item>
             <br>
             <el-form-item label="操作">
@@ -51,14 +56,18 @@
             </el-form-item>
             <br>
             <el-form-item label="间隔">
-              <el-input-number style="width: 180px;" :step="100" :min="500"
+              <el-input-number :step="100" :min="500"
                                v-model="settingStore.setting.level.cailiao_payload.sleeps" size="small"
-                               placeholder="请输入攻打间隔" clearable/>
+                               clearable/>
             </el-form-item>
             <el-form-item label="Timer">
-              <el-input-number style="width: 180px;" :step="1" :min="1"
+              <el-input-number :step="1" :min="1"
                                v-model="settingStore.setting.level.cailiao_payload.attack_timer" size="small"
-                               placeholder="请输入整数" clearable/>
+                               clearable/>
+            </el-form-item>
+            <br>
+            <el-form-item label="分数(过大无法结算)">
+              <el-input-number :step="1000" size="small" v-model="settingStore.setting.level.cailiao_payload.score" clearable/>
             </el-form-item>
             <br>
             <el-form-item label="贵族">
@@ -146,6 +155,10 @@
             <el-input-number style="width: 180px;" :step="1" :min="1" v-model="edit_form.attack_timer" size="small"
                              placeholder="请输入整数" clearable/>
           </el-form-item>
+          <el-form-item label="分数">
+            <el-input-number style="width: 180px;" :step="1" :min="1" v-model="edit_form.score" size="small"
+                             placeholder="请输入整数" clearable/>
+          </el-form-item>
           <el-form-item label="操作">
             <el-button type="primary" @click="add_rule" plain>添加</el-button>
             <el-button type="success" @click="editor_visible = false" plain>完成</el-button>
@@ -154,6 +167,7 @@
         <el-table :data="rules" style="width: 100%">
           <el-table-column type="index" width="50"></el-table-column>
           <el-table-column prop="level" label="关卡"></el-table-column>
+          <el-table-column prop="score" label="分数"></el-table-column>
           <el-table-column prop="is_hero" label="难度">
             <template #default="scope">
               {{ scope.row.is_hero ? '英雄' : '普通' }}
@@ -188,7 +202,8 @@ const edit_form = ref({
   level: 1,
   is_hero: false,
   two_gain: 0,
-  attack_timer: 10
+  attack_timer: 10,
+  score: 10000
 })
 const rules = computed(() => {
   try {

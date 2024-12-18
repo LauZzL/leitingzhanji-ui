@@ -61,7 +61,6 @@ const isCollapse = ref(true);
 </script>
 
 <style>
-/* 样式可以根据需要自行调整 */
 .el-menu-vertical-demo {
   padding-top: 10px;
 }

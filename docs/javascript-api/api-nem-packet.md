@@ -75,3 +75,28 @@ nem.logger('success', `计算成功:${actions}`);
 成功：232411781
 失败：计算错误等其他异常信息
 ```
+
+
+## `generateScoreMap` <Badge type="info" text="function" />
+
+
+### nem.packet.generateScoreMap(payload)
+
+- payload <Badge type="info" text="String" /> 结算数据包，经过JSON.stringify。
+
+```javascript
+const payload = `{...}`
+const scoreMap = nem.packet.generateScoreMap(payload);
+nem.logger('success', `scoreMap:${scoreMap}`);
+```
+
+### 返回数据
+
+```json
+{
+    "0": 50,
+    "1": 0,
+    "2": 426,
+    "3": 16100
+}
+```
