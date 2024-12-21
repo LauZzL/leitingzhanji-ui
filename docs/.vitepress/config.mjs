@@ -13,7 +13,8 @@ export default defineConfig({
       { text: '快速开始', link: '/guide/what-is-ltzj-nem' },
       { text: '使用手册', link: '/use-manual/index' },
       { text: '封包', link: '/packet/what-is-packet' },
-      { text: 'API', link: '/javascript-api/what-is-javascript-api' },
+      { text: 'JAVASCRIPT-API', link: '/javascript-api/what-is-javascript-api' },
+      { text: 'HTTP-SERVER', link: '/http-server/what-is-http-server' },
     ],
 
     sidebar: {
@@ -36,7 +37,7 @@ export default defineConfig({
       '/javascript-api/': {
         items: [
           {
-            text: 'API',
+            text: 'JAVASCRIPT-API',
             items: [
               { text: '什么是JavaScript Api？', link: '/javascript-api/what-is-javascript-api' },
               {
@@ -58,6 +59,25 @@ export default defineConfig({
                 items: [
                   { text: '如何共享您的脚本？', link: 'how-to-share' },
                   { text: '获取当前登录游戏用户信息', link: 'get-user-login' },
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      '/http-server/': {
+        items: [
+          {
+            text: 'HTTP-SERVER',
+            items: [
+              { text: '什么是HTTP SERVER？', link: '/http-server/what-is-http-server' },
+              {
+                text: 'Open API',
+                base: '/http-server/http-server-',
+                items: [
+                  { text: 'p.f', link: 'pf' },
+                  { text: 'gain2json', link: 'gain2json' },
+                  { text: 'getActionTag', link: 'get-action-tag' },
                 ]
               }
             ]

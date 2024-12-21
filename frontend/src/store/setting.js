@@ -9,7 +9,7 @@ export const useSettingStore = defineStore('setting', () => {
         },
         boss: {
             level: 'horse',
-            sub: 2,
+            sub: 3,
             nums: 1,
             attack_timer: 10
         },
@@ -123,13 +123,13 @@ export const useSettingStore = defineStore('setting', () => {
                         label: "激光迷宫(经验)",
                         type: 'laser',
                         id: 1,
-                        value: [1, 2],
+                        value: [3],
                         nums: 0,
                     }, {
                         label: "导弹猎场(材料)",
                         type: 'missile',
                         id: 2,
-                        value: [0, 1, 2],
+                        value: [2, 3],
                         nums: 0,
                     }
                 ]

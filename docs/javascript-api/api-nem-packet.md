@@ -43,7 +43,7 @@ nem.logger('info', result)
 [
     {
         "name": "钻石",
-        "color": "#409eff", // 对应游戏内装备品质颜色
+        "color": "#409eff",
         "num": "20"
     }
 ]
@@ -58,12 +58,35 @@ nem.logger('info', result)
 
 - start <Badge type="info" text="Integer" /> 起始位置，部分模式需要计算多次actions(例如攻打无尽需要重复计算，第二次计算的start就是上一次计算的actionInfos长度)。
 - actionInfos <Badge type="info" text="String" /> 进入对局返回的actionInfos数组(需要JSON.stringify)。
-- level <Badge type="info" text="Integer" /> 闯关填写关卡，无尽、PVP固定为1，BOSS关卡为难度+1。
-- type <Badge type="info" text="String" /> 普通关卡(normal) | 英雄关卡(hero) | 陨石陷阱(meteorite) | 激光迷宫(laser) | 导弹猎场(missile) | 白鸟座(bird) | 天龙座(loong) | 仙女座(female) | 天马座(horse) | 无尽(endless) | PVP金币场(pvp_gold) | 超限BOSS(hyper_${boos_type}[hyper_loong]) 。
+- level <Badge type="info" text="Integer" /> 见下表规范。
+- type <Badge type="info" text="String" /> 见下表规范。
+
+::: details `type` `level` 参数规范
+
+
+
+| 类型     | type                  | level | 说明                                   |
+|--------|-----------------------|-------|--------------------------------------|
+| 普通关卡   | normal                | 关卡数   | 闯关模式普通关卡                             |
+| 英雄关卡   | hero                  | 关卡数   | 闯关模式英雄关卡                             |
+| 陨石陷阱   | meteorite             | 难度+1  | 活动关卡陨石陷阱                             |
+| 激光迷宫   | laser                 | 难度+1  | 活动关卡激光迷宫                             |
+| 导弹猎场   | missile               | 难度+1  | 活动关卡导弹猎场                             |
+| 白鸟座    | bird                  | 难度+1  | BOSS关卡白鸟座                            |
+| 天龙座    | loong                 | 难度+1  | BOSS关卡天龙座                            |
+| 仙女座    | female                | 难度+1  | BOSS关卡仙女座                            |
+| 天马座    | horse                 | 难度+1  | BOSS关卡天马座                            |
+| 无尽     | endless               | 固定1   | 无尽模式                                 |
+| PVP金币场 | pvp_gold              | 固定1   | PVP金币场                               |
+| 超限模式   | hyper_$\{boos_type\}  | 难度+1  | 超限模式，boos_type为BOSS类型，例如：hyper_loong |
+| 远征模式   | expedition_$\{stage\} | 1-8   | 远征模式，stage为上方三个环节(1-3)               |
+
+
+:::
 
 
 ```javascript
-const actionInfos = [{"lootIds":[],"lootEnemyIds":[],"lootWaveIds":[],"norId":2},...]
+const actionInfos = [{"lootIds":[],"lootEnemyIds":[],"lootWaveIds":[],"norId":2}]
 const actions = nem.packet.getActionTag(0, JSON.stringify(actionInfos),1, 'pvp_gold');
 nem.logger('success', `计算成功:${actions}`);
 ```

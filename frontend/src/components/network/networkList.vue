@@ -55,8 +55,22 @@
     <el-space :size="18" style="margin-bottom: 10px;">
       <el-checkbox v-model="messageStore.capture">捕获数据</el-checkbox>
       <el-tooltip placement="top" content="启动js-hook-server来监听数据">
-        <el-button @click="startJsHookServer" type="primary">启动Js-Hook-Server</el-button>
+        <el-button @click="hookServer = true" type="primary">启动Js-Hook-Server</el-button>
       </el-tooltip>
+      <el-dialog v-model="hookServer" title="请输入端口号" width="500">
+        <el-form>
+          <el-form-item label="端口号">
+            <el-input type="number" v-model="port"></el-input>
+          </el-form-item>
+        </el-form>
+        <template #footer>
+          <div class="dialog-footer">
+            <el-button type="primary" @click="startJsHookServer">
+              启动
+            </el-button>
+          </div>
+        </template>
+      </el-dialog>
       <el-tooltip placement="top" content="Mock">
         <el-button type="primary" @click="mockVisable = true" circle>
           <svg-icon
@@ -124,6 +138,8 @@ const change_list = ref([])
 const change_list_encode = ref([])
 const search = ref('')
 
+const hookServer = ref(false)
+const port = ref(2026)
 
 const filterTableData = computed(() =>
     messageStore.network.filter(
@@ -225,8 +241,10 @@ const copy2js = (item) => {
 
 const startJsHookServer = () => {
   Webview.sendMessageToHost({
-    cmd: 2026
+    cmd: 2026,
+    port: port.value
   })
+  hookServer.value = false
 }
 
 </script>

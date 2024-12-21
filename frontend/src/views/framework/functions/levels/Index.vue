@@ -19,7 +19,7 @@
               <el-checkbox v-model="settingStore.setting.level.level_payload.is_hero">英雄</el-checkbox>
             </el-form-item>
             <br>
-            <el-form-item label="分数(过大无法结算)">
+            <el-form-item label="分数">
               <el-input-number :step="1000" size="small" v-model="settingStore.setting.level.level_payload.score" clearable/>
             </el-form-item>
             <br>
@@ -66,7 +66,7 @@
                                clearable/>
             </el-form-item>
             <br>
-            <el-form-item label="分数(过大无法结算)">
+            <el-form-item label="分数">
               <el-input-number :step="1000" size="small" v-model="settingStore.setting.level.cailiao_payload.score" clearable/>
             </el-form-item>
             <br>
